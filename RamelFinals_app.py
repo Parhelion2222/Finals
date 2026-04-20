@@ -15,10 +15,18 @@ df = load_data()
 
 st.title("How Our Performance Determines Our Future")
 
-fig = px.line(df, x="Age", y="High_School_GPA", color='Gender',
-              title=f'High School GPA by Age')
+fig = px.scatter(df, 
+                 x="High_School_GPA", 
+                 y="University_GPA", 
+                 color="Gender",
+                 title="High School GPA vs University GPA by Gender",
+                 labels={
+                     "High_School_GPA": "High School GPA",
+                     "University_GPA": "University GPA"
+                 },
+                 opacity=0.7)
 
-st.plotly_chart(fig) 
+st.plotly_chart(fig)
 
 df_pie = df.groupby(["Field_of_Study", ])["Starting_Salary"].mean().reset_index()
 
