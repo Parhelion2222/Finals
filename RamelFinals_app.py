@@ -16,7 +16,7 @@ df = load_data()
 st.title("Mental Health Dashboard Hello")
 
 
-fig = px.line(filtered_df, x="Age", y="Stress_Level", color='Gender',
+fig = px.line(df, x="Age", y="Stress_Level", color='Gender',
               title=f'Stress Level by Age')
 
 st.plotly_chart(fig) 
