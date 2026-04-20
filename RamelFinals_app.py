@@ -12,6 +12,6 @@ def load_data():
 
 df = load_data()
 
-st.title("Mental Health Dashboard")
+st.title("Mental Health Dashboard Hello")
 st.dataframe(df)
 st.write(df.describe())
