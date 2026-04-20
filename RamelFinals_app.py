@@ -13,7 +13,7 @@ def load_data():
 
 df = load_data()
 
-st.title("Mental Health Dashboard Hello")
+st.title("GPA Dashboard Hello")
 
 df_avg = df.groupby(["Age", "Gender"])["High_School_GPA"].mean().reset_index()
 
