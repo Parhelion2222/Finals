@@ -20,8 +20,8 @@ fig = px.line(df_avg, x="Age", y="High_School_GPA", color='Gender',
 
 st.plotly_chart(fig) 
 
-df_pie = df.groupby(["Field_of_Study", ])
+df_pie = df.groupby(["Current_Job_Level", ])["Starting_Salary"].mean().reset_index()
 
-piechart = px.bar(df, x='Starting_Salary', y='Current_Job_Level', title='Starting Salary by Job Level')
+piechart = px.bar(df_pie, x='Starting_Salary', y='Current_Job_Level', title='Starting Salary by Job Level')
 
 st.plotly_chart(piechart) 
