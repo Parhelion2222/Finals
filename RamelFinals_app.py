@@ -15,23 +15,15 @@ df = load_data()
 
 st.title("How Our Performance Determines Our Future")
 
-avg_gpa = df.groupby("Gender")[["High_School_GPA", "University_GPA"]].mean().reset_index()
-
-
-avg_melted = avg_gpa.melt(id_vars="Gender", 
-                           value_vars=["High_School_GPA", "University_GPA"],
-                           var_name="Stage", 
-                           value_name="Average_GPA")
-
-fig = px.line(avg_melted, 
-              x="Stage", 
-              y="Average_GPA", 
+fig = px.line(df, 
+              x="Age", 
+              y="SAT_Score", 
               color="Gender",
-              markers=True, 
-              title="Average GPA: High School vs University by Gender",
+              markers=True,
+              title="Average SAT Score by Age and Gender",
               labels={
-                  "Stage": "Academic Stage",
-                  "Average_GPA": "Average GPA"
+                  "Age": "Age",
+                  "SAT_Score": "Average SAT Score"
               })
 
 st.plotly_chart(fig)
