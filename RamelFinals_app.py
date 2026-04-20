@@ -28,6 +28,19 @@ fig = px.line(df_avg,
 
 st.plotly_chart(fig)
 
+df_scatter = px.scatter(df,
+                 x="Soft_Skills_Score",
+                 y="Years_to_Promotion",
+                 color="Gender",
+                 title="Soft Skills Score vs Years to Promotion",
+                 labels={
+                     "Soft_Skills_Score": "Soft Skills Score",
+                     "Years_to_Promotion": "Years to Promotion"
+                 },
+                 opacity=0.7)
+
+st.plotly_chart(df_scatter)
+
 df_pie = df.groupby(["Field_of_Study", ])["Starting_Salary"].mean().reset_index()
 
 piechart = px.bar(df_pie, x='Field_of_Study', y='Starting_Salary', title='Starting Salary by Field of Study')
