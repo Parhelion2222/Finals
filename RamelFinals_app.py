@@ -17,7 +17,7 @@ st.title("GPA Dashboard Hello")
 
 df_avg = df.groupby(["Age", "Gender"])["High_School_GPA"].mean().reset_index()
 
-fig = px.line(df_avg, x="High_School_GPA", y="Age", color='Gender',
+fig = px.line(df_avg, x="Age", y="High_School_GPA", color='Gender',
               title=f'High School GPA by Age')
 
 st.plotly_chart(fig) 
