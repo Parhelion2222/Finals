@@ -13,15 +13,16 @@ def load_data():
 
 df = load_data()
 
-df_avg = df.groupby(["Age", "Gender"])["High_School_GPA"].mean().reset_index()
+st.title("How Our Performance Determines Our Future")
+df_avg = df.groupby([ "Gender"])["High_School_GPA"].mean().reset_index()
 
 fig = px.line(df_avg, x="Age", y="High_School_GPA", color='Gender',
               title=f'High School GPA by Age')
 
 st.plotly_chart(fig) 
 
-df_pie = df.groupby(["Current_Job_Level", ])["Starting_Salary"].mean().reset_index()
+df_pie = df.groupby(["Field_of_Study", ])["Starting_Salary"].mean().reset_index()
 
-piechart = px.bar(df_pie, x='Starting_Salary', y='Current_Job_Level', title='Starting Salary by Job Level')
+piechart = px.bar(df_pie, x='Starting_Salary', y='Field_of_Study', title='Starting Salary by Job Level')
 
 st.plotly_chart(piechart) 
