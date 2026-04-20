@@ -14,8 +14,8 @@ def load_data():
 df = load_data()
 
 st.title("How Our Performance Determines Our Future")
-
-fig = px.line(df, 
+df_avg = avg_sat = df.groupby(["Age", "Gender"])["SAT_Score"].mean().reset_index()
+fig = px.line(df_avg, 
               x="Age", 
               y="SAT_Score", 
               color="Gender",
