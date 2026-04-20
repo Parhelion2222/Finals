@@ -15,16 +15,24 @@ df = load_data()
 
 st.title("How Our Performance Determines Our Future")
 
-fig = px.scatter(df, 
-                 x="High_School_GPA", 
-                 y="University_GPA", 
-                 color="Gender",
-                 title="High School GPA vs University GPA by Gender",
-                 labels={
-                     "High_School_GPA": "High School GPA",
-                     "University_GPA": "University GPA"
-                 },
-                 opacity=0.7)
+avg_gpa = df.groupby("Gender")[["High_School_GPA", "University_GPA"]].mean().reset_index()
+
+
+avg_melted = avg_gpa.melt(id_vars="Gender", 
+                           value_vars=["High_School_GPA", "University_GPA"],
+                           var_name="Stage", 
+                           value_name="Average_GPA")
+
+fig = px.line(avg_melted, 
+              x="Stage", 
+              y="Average_GPA", 
+              color="Gender",
+              markers=True, 
+              title="Average GPA: High School vs University by Gender",
+              labels={
+                  "Stage": "Academic Stage",
+                  "Average_GPA": "Average GPA"
+              })
 
 st.plotly_chart(fig)
 
