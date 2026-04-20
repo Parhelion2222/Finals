@@ -17,7 +17,7 @@ st.title("Mental Health Dashboard Hello")
 
 df_avg = df.groupby(["Age", "Gender"])["High_School_GPA"].mean().reset_index()
 
-fig = px.line(df_avg, x="Stress_Level", y="Age", color='Gender',
-              title=f'Stress Level by Age')
+fig = px.line(df_avg, x="High_School_GPA", y="Age", color='Gender',
+              title=f'High School GPA by Age')
 
 st.plotly_chart(fig) 
