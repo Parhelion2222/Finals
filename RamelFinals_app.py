@@ -14,9 +14,8 @@ def load_data():
 df = load_data()
 
 st.title("How Our Performance Determines Our Future")
-df_avg = df.groupby(["Age","Gender"])["High_School_GPA"].mean().reset_index()
 
-fig = px.line(df_avg, x="Age", y="High_School_GPA", color='Gender',
+fig = px.line(df, x="Age", y="High_School_GPA", color='Gender',
               title=f'High School GPA by Age')
 
 st.plotly_chart(fig) 
