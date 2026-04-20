@@ -2,6 +2,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+import plotly.express as px
 
 st.set_page_config(layout="wide")
 @st.cache_data
@@ -13,5 +14,10 @@ def load_data():
 df = load_data()
 
 st.title("Mental Health Dashboard Hello")
-st.dataframe(df)
-st.write(df.describe())
+
+gender = st.selectbox("Select Gender", df['Gender'].unique())
+filtered_df = df[df['Gender'] == gender]
+
+fig = px.line(filtered_df, x="Age", y="Stress_Level", color='Gender',
+              title=f'Stress Level by Age — {gender}')
+
