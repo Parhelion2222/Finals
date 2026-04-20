@@ -13,11 +13,13 @@ def load_data():
 
 df = load_data()
 
-st.title("GPA Dashboard Hello")
-
 df_avg = df.groupby(["Age", "Gender"])["High_School_GPA"].mean().reset_index()
 
 fig = px.line(df_avg, x="Age", y="High_School_GPA", color='Gender',
               title=f'High School GPA by Age')
 
 st.plotly_chart(fig) 
+
+df_pie = df.groupby(["Field_of_Study", ])
+
+piechart = px.pie(df, values='Starting_Salary', names='Current_Job_Level', title='Starting Salary by Job Level')
