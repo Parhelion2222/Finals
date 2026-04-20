@@ -31,7 +31,6 @@ st.plotly_chart(fig)
 df_scatter = px.scatter(df,
                  x="Soft_Skills_Score",
                  y="Years_to_Promotion",
-                 color="red",
                  title="Soft Skills Score vs Years to Promotion",
                  labels={
                      "Soft_Skills_Score": "Soft Skills Score",
