@@ -15,8 +15,9 @@ df = load_data()
 
 st.title("Mental Health Dashboard Hello")
 
+df_avg = df.groupby(["Age", "Gender"])["Stress_Level"].mean().reset_index()
 
-fig = px.line(df, x="Age", y="Stress_Level", color='Gender',
+fig = px.line(df_avg, x="Age", y="Stress_Level", color='Gender',
               title=f'Stress Level by Age')
 
 st.plotly_chart(fig) 
