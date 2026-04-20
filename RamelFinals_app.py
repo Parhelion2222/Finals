@@ -22,6 +22,6 @@ st.plotly_chart(fig)
 
 df_pie = df.groupby(["Field_of_Study", ])
 
-piechart = px.pie(df, values='Starting_Salary', names='Current_Job_Level', title='Starting Salary by Job Level')
+piechart = px.bar(df, x='Starting_Salary', y='Current_Job_Level', title='Starting Salary by Job Level')
 
 st.plotly_chart(piechart) 
