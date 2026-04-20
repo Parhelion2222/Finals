@@ -7,7 +7,7 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 @st.cache_data
 def load_data():
-    url = 'https://raw.githubusercontent.com/Parhelion2222/Finals/main/archive%20(2)/mental_health.csv'
+    url = 'https://raw.githubusercontent.com/Parhelion2222/Finals/main/archive%20(2)/educ.csv'
     df = pd.read_csv(url)
     return df
 
@@ -15,7 +15,7 @@ df = load_data()
 
 st.title("Mental Health Dashboard Hello")
 
-df_avg = df.groupby(["Age", "Gender"])["Stress_Level"].mean().reset_index()
+df_avg = df.groupby(["Age", "Gender"])["High_School_GPA"].mean().reset_index()
 
 fig = px.line(df_avg, x="Stress_Level", y="Age", color='Gender',
               title=f'Stress Level by Age')
