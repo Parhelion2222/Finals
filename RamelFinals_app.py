@@ -49,55 +49,30 @@ st.plotly_chart(piechart)
 
 
 # Range Slider with Vertically Stacked Subplots
-fields = df["Field_of_Study"].unique()
-
-fig = make_subplots(
-    rows=len(fields),
-    cols=1,
-    shared_xaxes=True,
-    subplot_titles=list(fields),
-    vertical_spacing=0.03,
+df_grouped = (
+    df.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
+    .mean()
+    .reset_index()
+    .sort_values("Work_Life_Balance")
 )
 
-for i, field in enumerate(fields, start=1):
-    field_df = (
-        df[df["Field_of_Study"] == field]
-        .groupby("Work_Life_Balance")["Starting_Salary"]
-        .mean()
-        .reset_index()
-        .sort_values("Work_Life_Balance")
-    )
-    fig.add_trace(
-        go.Scatter(
-            x=field_df["Work_Life_Balance"],
-            y=field_df["Starting_Salary"],
-            mode="lines+markers",
-            name=field,
-            hovertemplate="Balance: %{x}<br>Avg Salary: $%{y:,.0f}<extra>" + field + "</extra>",
-        ),
-        row=i,
-        col=1,
-    )
-
-fig.update_layout(
-    height=300 * len(fields),
+fig = px.line(
+    df_grouped,
+    x="Work_Life_Balance",
+    y="Starting_Salary",
+    facet_row="Field_of_Study",
+    markers=True,
     title="Work-Life Balance vs Starting Salary by Field of Study",
-    showlegend=False,
-    template="plotly_white",
+    labels={
+        "Work_Life_Balance": "Work-Life Balance",
+        "Starting_Salary": "Avg Starting Salary ($)",
+    },
+    height=250 * df["Field_of_Study"].nunique(),
 )
 
-# range slider only on the last (bottom) x-axis
-last_xaxis = f"xaxis{len(fields)}"
-fig.update_layout({
-    last_xaxis: dict(
-        rangeslider=dict(visible=True),
-        tickmode="linear",
-        dtick=1,
-        title="Work-Life Balance",
-    )
-})
-
-fig.update_yaxes(title_text="Avg Salary ($)")
+fig.update_xaxes(tickmode="linear", dtick=1, rangeslider=dict(visible=True), row=1, col=1)
+fig.update_yaxes(matches=None, showticklabels=True)
+fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
 st.plotly_chart(fig, use_container_width=True)
 
