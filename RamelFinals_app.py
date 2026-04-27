@@ -5,6 +5,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
+pip install statsmodels
 
 st.set_page_config(layout="wide")
 @st.cache_data
