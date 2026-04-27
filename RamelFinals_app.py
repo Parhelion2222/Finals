@@ -48,30 +48,51 @@ st.plotly_chart(piechart)
 
 
 # Range Slider with Vertically Stacked Subplots
-fig = go.Figure()
+fields = df["Field_of_Study"].unique()
 
-cs = df[df["Field_of_Study"] == "Computer Science"]
+fig = make_subplots(
+    rows=len(fields),
+    cols=1,
+    shared_xaxes=True,
+    subplot_titles=list(fields),
+    vertical_spacing=0.03,
+)
 
-fig.add_trace(go.Scatter(
-    x=cs["Career_Satisfaction"],
-    y=cs["Work_Life_Balance"],
-    mode="markers",
-    name="Individual student",
-    marker=dict(
-        color="rgba(55, 138, 221, 0.45)",
-        size=10,
-        line=dict(color="rgba(55, 138, 221, 0.8)", width=1),
-    ),
-    hovertemplate="Satisfaction: %{x}<br>Work-life balance: %{y}<extra></extra>",
-))
+for i, field in enumerate(fields, start=1):
+    field_df = (
+        df[df["Field_of_Study"] == field]
+        .groupby("Work_Life_Balance")["Starting_Salary"]
+        .mean()
+        .reset_index()
+        .sort_values("Work_Life_Balance")
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=field_df["Work_Life_Balance"],
+            y=field_df["Starting_Salary"],
+            mode="lines+markers",
+            name=field,
+            hovertemplate="Balance: %{x}<br>Avg Salary: $%{y:,.0f}<extra>" + field + "</extra>",
+        ),
+        row=i,
+        col=1,
+    )
 
 fig.update_layout(
-    title="Career Satisfaction vs Work-Life Balance — Computer Science",
-    xaxis=dict(title="Career Satisfaction (1–10)", tickmode="linear", dtick=1),
-    yaxis=dict(title="Work-Life Balance (1–10)", tickmode="linear", dtick=1),
-    hovermode="closest",
+    height=300 * len(fields),
+    title="Work-Life Balance vs Starting Salary by Field of Study",
+    showlegend=False,
     template="plotly_white",
+    xaxis=dict(
+        rangeslider=dict(visible=True),
+        tickmode="linear",
+        dtick=1,
+    ),
 )
+
+fig.update_xaxes(title_text="Work-Life Balance", row=len(fields), col=1)
+fig.update_yaxes(title_text="Avg Starting Salary ($)")
 
 st.plotly_chart(fig, use_container_width=True)
 
