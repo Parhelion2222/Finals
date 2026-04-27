@@ -60,35 +60,24 @@ fig = px.line(
     df_grouped,
     x="Work_Life_Balance",
     y="Starting_Salary",
-    facet_row="Field_of_Study",
+    color="Field_of_Study",
     markers=True,
     title="Work-Life Balance vs Starting Salary by Field of Study",
     labels={
         "Work_Life_Balance": "Work-Life Balance",
         "Starting_Salary": "Avg Starting Salary ($)",
     },
-    height=250 * df["Field_of_Study"].nunique(),
 )
 
-fig.update_xaxes(
-    tickmode="linear",
-    dtick=1,
-    range=[df["Work_Life_Balance"].min() - 0.5, df["Work_Life_Balance"].max() + 0.5],
+fig.update_layout(
+    yaxis=dict(rangemode="tozero"),
+    xaxis=dict(
+        tickmode="linear",
+        dtick=1,
+        rangeslider=dict(visible=True, thickness=0.05),
+    ),
+    legend=dict(title="Field of Study"),
 )
-
-fig.update_yaxes(
-    matches=None,
-    showticklabels=True,
-    rangemode="tozero",   # ← fixes negative y-axis
-)
-
-# range slider on bottom subplot only
-fig.update_xaxes(
-    rangeslider=dict(visible=True, thickness=0.05),
-    row=1, col=1
-)
-
-fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
 st.plotly_chart(fig, use_container_width=True)
 
