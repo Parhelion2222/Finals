@@ -56,15 +56,18 @@ df_grouped = (
     .sort_values("Work_Life_Balance")
 )
 
+# add jitter
+df_grouped["Work_Life_Balance_jitter"] = df_grouped["Work_Life_Balance"] + np.random.uniform(-0.15, 0.15, len(df_grouped))
+
 fig = px.line(
     df_grouped,
-    x="Work_Life_Balance",
+    x="Work_Life_Balance_jitter",  # ← jittered x
     y="Starting_Salary",
     color="Field_of_Study",
     markers=True,
     title="Work-Life Balance vs Starting Salary by Field of Study",
     labels={
-        "Work_Life_Balance": "Work-Life Balance",
+        "Work_Life_Balance_jitter": "Work-Life Balance",
         "Starting_Salary": "Avg Starting Salary ($)",
     },
 )
@@ -76,9 +79,7 @@ fig.update_layout(
         dtick=1,
         rangeslider=dict(visible=True, thickness=0.05),
     ),
-    legend=dict(title="Field of Study"),
 )
 
-st.plotly_chart(fig, use_container_width=True)
 
 
