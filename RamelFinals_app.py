@@ -97,6 +97,7 @@ with col1:
             "University_GPA": "University GPA",
             "Starting_Salary": "Starting Salary ($)",
         }
+        points=False,
     )
 
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
