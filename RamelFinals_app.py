@@ -101,7 +101,7 @@ fig_gpa = px.scatter(
     df,
     x="University_GPA",
     y="Starting_Salary",
-    color="Field_of_Study",
+    color="green",
     title="University GPA vs Starting Salary by Field of Study",
     labels={
         "University_GPA": "University GPA",
