@@ -59,7 +59,7 @@ with col2:
         y="Starting_Salary",
         color="Field_of_Study",
         markers=True,
-        title="Work-Life Balance vs Starting Salary by Field of Study",
+        title="Work-Life Balance by Starting Salary",
         labels={
             "Work_jitter": "Work-Life Balance",
             "Starting_Salary": "Avg Starting Salary ($)",
