@@ -106,7 +106,6 @@ fig_gpa = px.scatter(
     labels={
         "University_GPA": "University GPA",
         "Starting_Salary": "Starting Salary ($)",
-        "Field_of_Study": "Field of Study",
     },
     opacity=0.7,
     trendline="ols",
