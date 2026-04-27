@@ -45,3 +45,34 @@ df_pie = df.groupby(["Field_of_Study", ])["Starting_Salary"].mean().reset_index(
 piechart = px.bar(df_pie, x='Field_of_Study', y='Starting_Salary', title='Starting Salary by Field of Study')
 
 st.plotly_chart(piechart) 
+
+
+# Range Slider with Vertically Stacked Subplots
+fig = go.figure()
+
+df = pd.read_csv("educ__1_.csv")
+cs = df[df["Field_of_Study"] == "Computer Science"]
+ 
+avg = (
+    cs.groupby("Career_Satisfaction")["Work_Life_Balance"]
+    .mean()
+    .reset_index()
+    .rename(columns={"Work_Life_Balance": "Avg_Work_Life_Balance"})
+)
+ 
+fig = go.Figure()
+ 
+fig.add_trace(go.Scatter(
+    x=cs["Career_Satisfaction"],
+    y=cs["Work_Life_Balance"],
+    mode="markers",
+    name="Individual student",
+    marker=dict(
+        color="rgba(55, 138, 221, 0.45)",
+        size=10,
+        line=dict(color="rgba(55, 138, 221, 0.8)", width=1),
+    ),
+    hovertemplate="Satisfaction: %{x}<br>Work-life balance: %{y}<extra></extra>",
+))
+
+
