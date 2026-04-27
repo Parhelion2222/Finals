@@ -98,12 +98,11 @@ with col2:
 
 #Error Bar
 fig = go.Figure(data=go.Scatter(
-        x=[1, 2, 3, 4],
-        y=[2, 1, 3, 4],
+        df,
+        x="University_GPA",
+        y="Starting_Salary",
         error_y=dict(
             type='data',
-            symmetric=False,
-            array=[0.1, 0.2, 0.1, 0.1],
-            arrayminus=[0.2, 0.4, 1, 0.2])
+            symmetric=False
         ))
 st.plotly_chart(fig)
