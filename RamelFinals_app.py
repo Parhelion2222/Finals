@@ -115,5 +115,4 @@ with col2:
                       "SAT_Score": "Average SAT Score"
                   })
 
-    fig_line.update_layout(yaxis=dict(rangemode="totwo"))
     st.plotly_chart(fig_line)
