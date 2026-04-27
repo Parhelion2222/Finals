@@ -96,4 +96,20 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
+#Scatter plot
+fig_gpa = px.scatter(
+    df,
+    x="University_GPA",
+    y="Starting_Salary",
+    color="Field_of_Study",
+    title="University GPA vs Starting Salary by Field of Study",
+    labels={
+        "University_GPA": "University GPA",
+        "Starting_Salary": "Starting Salary ($)",
+        "Field_of_Study": "Field of Study",
+    },
+    opacity=0.7,
+    trendline="ols",
+)
 
+st.plotly_chart(fig_gpa, use_container_width=True)
