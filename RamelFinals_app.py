@@ -97,7 +97,7 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 #Scatter plot
-fig_gpa = px.scatter(
+fig_box = px.box(
     df,
     x="University_GPA",
     y="Starting_Salary",
@@ -105,9 +105,7 @@ fig_gpa = px.scatter(
     labels={
         "University_GPA": "University GPA",
         "Starting_Salary": "Starting Salary ($)",
-    },
-    opacity=0.7,
-    trendline="ols",
+    }
 )
 
-st.plotly_chart(fig_gpa, use_container_width=True)
+st.plotly_chart(fig_box, use_container_width=True)
