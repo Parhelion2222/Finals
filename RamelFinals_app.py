@@ -98,12 +98,13 @@ with col1:
             "Starting_Salary": "Starting Salary ($)",
         }
     )
-    
+
+    fig_box.update_layout(yaxis=dict(rangemode="tozero"))
     st.plotly_chart(fig_box, use_container_width=True)
 
 with col2: 
     df_avg = avg_sat = df.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
-    fig = px.line(df_avg, 
+    fig_line = px.line(df_avg, 
                   x="High_School_GPA", 
                   y="University_GPA", 
                   color="Gender",
@@ -113,5 +114,6 @@ with col2:
                       "Age": "Age",
                       "SAT_Score": "Average SAT Score"
                   })
-    
-    st.plotly_chart(fig)
+
+    fig_line.update_layout(yaxis=dict(rangemode="tozero"))
+    st.plotly_chart(fig_line)
