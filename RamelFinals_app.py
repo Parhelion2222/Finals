@@ -103,6 +103,6 @@ fig = go.Figure(data=go.Scatter(
         y="Starting_Salary",
         error_y=dict(
             type='data',
-            symmetric=False
+            symmetric=False)
         ))
 st.plotly_chart(fig)
