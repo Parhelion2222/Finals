@@ -101,7 +101,7 @@ with col2:
                   y="University_GPA", 
                   color="Gender",
                   markers=True,
-                  title="Average SAT Score by Age and Gender",
+                  title="Average University GPA by High School GPA and Gender",
                   labels={
                       "High_School_GPA": "Average High School GPA",
                       "University_GPA": "Average University GPA"
