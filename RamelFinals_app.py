@@ -106,4 +106,4 @@ fig = go.Figure(data=go.Scatter(
             array=[0.1, 0.2, 0.1, 0.1],
             arrayminus=[0.2, 0.4, 1, 0.2])
         ))
-fig.show()
+st.plotly_chart(fig)
