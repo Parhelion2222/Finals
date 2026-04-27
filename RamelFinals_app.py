@@ -67,7 +67,6 @@ for i, field in enumerate(fields, start=1):
         .reset_index()
         .sort_values("Work_Life_Balance")
     )
-
     fig.add_trace(
         go.Scatter(
             x=field_df["Work_Life_Balance"],
@@ -85,15 +84,20 @@ fig.update_layout(
     title="Work-Life Balance vs Starting Salary by Field of Study",
     showlegend=False,
     template="plotly_white",
-    xaxis=dict(
+)
+
+# range slider only on the last (bottom) x-axis
+last_xaxis = f"xaxis{len(fields)}"
+fig.update_layout({
+    last_xaxis: dict(
         rangeslider=dict(visible=True),
         tickmode="linear",
         dtick=1,
-    ),
-)
+        title="Work-Life Balance",
+    )
+})
 
-fig.update_xaxes(title_text="Work-Life Balance", row=len(fields), col=1)
-fig.update_yaxes(title_text="Avg Starting Salary ($)")
+fig.update_yaxes(title_text="Avg Salary ($)")
 
 st.plotly_chart(fig, use_container_width=True)
 
