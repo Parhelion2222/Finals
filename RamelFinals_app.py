@@ -57,12 +57,12 @@ df_grouped = (
     .sort_values("Work_Life_Balance")
 )
 
-# add jitter
-df_grouped["Work_Life_Balance_jitter"] = df_grouped["Work_Life_Balance"] + np.random.uniform(-0.15, 0.15, len(df_grouped))
+
+df_grouped["Work_jitter"] = df_grouped["Work_Life_Balance"] + np.random.uniform(-0.30, 0.30, len(df_grouped))
 
 fig = px.line(
     df_grouped,
-    x="Work_Life_Balance_jitter",  # ← jittered x
+    x="Work_jitter",  
     y="Starting_Salary",
     color="Field_of_Study",
     markers=True,
