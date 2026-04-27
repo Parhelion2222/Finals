@@ -100,7 +100,7 @@ with col2:
 fig_box = go.Figure()
 
 for field in df["Field_of_Study"].unique():
-    fig_box = df[df["Field_of_Study"] == field]
+    field_df = df[df["Field_of_Study"] == field]  # ← field_df not fig_box
     fig_box.add_trace(go.Scatter(
         x=field_df["University_GPA"],
         y=field_df["Starting_Salary"],
