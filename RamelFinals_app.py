@@ -97,12 +97,17 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 #Error Bar
-fig = go.Figure(data=go.Scatter(
-        df,
-        x="University_GPA",
-        y="Starting_Salary",
-        error_y=dict(
-            type='data',
-            symmetric=False)
-        ))
-st.plotly_chart(fig)
+fig_box = px.scatter(
+    df,
+    x="University_GPA",
+    y="Starting_Salary",
+    color="Field_of_Study",
+    opacity=0.7,
+    title="University GPA vs Starting Salary by Field of Study",
+    labels={
+        "University_GPA": "University GPA",
+        "Starting_Salary": "Starting Salary ($)",
+    },
+)
+
+st.plotly_chart(fig_box, use_container_width=True)
