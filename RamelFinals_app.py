@@ -73,6 +73,12 @@ fig = px.line(
     },
 )
 
+fig.update_traces(
+    line=dict(width=2),
+    marker=dict(size=8, opacity=0.4),
+    opacity=0.6
+)
+
 fig.update_layout(
     yaxis=dict(rangemode="tozero"),
     xaxis=dict(
