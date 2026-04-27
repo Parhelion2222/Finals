@@ -105,7 +105,7 @@ fig_box = go.Figure(data = go.Scatter(
     error_y=dict(
         type = 'data',
         symmetric = False,    
-    )
+    ),
     labels={
         "University_GPA": "University GPA",
         "Starting_Salary": "Starting Salary ($)",
