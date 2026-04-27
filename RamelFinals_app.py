@@ -48,7 +48,7 @@ st.plotly_chart(piechart)
 
 
 # Range Slider with Vertically Stacked Subplots
-fig = go.figure()
+fig = go.Figure()
 
 df = pd.read_csv("educ__1_.csv")
 cs = df[df["Field_of_Study"] == "Computer Science"]
@@ -59,8 +59,6 @@ avg = (
     .reset_index()
     .rename(columns={"Work_Life_Balance": "Avg_Work_Life_Balance"})
 )
- 
-fig = go.Figure()
  
 fig.add_trace(go.Scatter(
     x=cs["Career_Satisfaction"],
