@@ -99,8 +99,6 @@ with col2:
 #Error Bar
 df_gpa = (
     df.groupby("University_GPA")["Starting_Salary"]
-    .agg(["mean", "std"])
-    .reset_index()
 )
 
 fig_box = go.Figure()
