@@ -96,7 +96,7 @@ with col1:
         labels={
             "University_GPA": "University GPA",
             "Starting_Salary": "Starting Salary ($)",
-        }
+        },
         points=False,
     )
 
