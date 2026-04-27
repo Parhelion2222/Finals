@@ -97,19 +97,28 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 #Error Bar
-fig_box = go.scatter(
-    df,
-    x="University_GPA",
-    y="Starting_Salary",
+fig_box = go.Figure()
+
+for field in df["Field_of_Study"].unique():
+    fig_box = df[df["Field_of_Study"] == field]
+    fig_gpa.add_trace(go.Scatter(
+        x=field_df["University_GPA"],
+        y=field_df["Starting_Salary"],
+        mode="markers",
+        name=field,
+        opacity=0.7,
+        error_y=dict(
+            type="data",
+            array=field_df["Starting_Salary"].std() * np.ones(len(field_df)),
+            symmetric=True,
+        ),
+    ))
+
+fig_box.update_layout(
     title="University GPA vs Starting Salary by Field of Study",
-    error_y=dict(
-        type = 'data',
-        symmetric = False,    
-    ),
-    labels={
-        "University_GPA": "University GPA",
-        "Starting_Salary": "Starting Salary ($)",
-    }
+    xaxis_title="University GPA",
+    yaxis_title="Starting Salary ($)",
+    legend_title="Field of Study",
 )
 
 st.plotly_chart(fig_box, use_container_width=True)
