@@ -83,7 +83,7 @@ with col1:
         df,
         x="University_GPA",
         y="Starting_Salary",
-        title="University GPA vs Starting Salary by Field of Study",
+        title="University GPA to Starting Salary",
         labels={
             "University_GPA": "University GPA",
             "Starting_Salary": "Starting Salary ($)",
