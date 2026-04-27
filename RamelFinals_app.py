@@ -98,7 +98,7 @@ with col2:
 
 #Error Bar
 df_gpa = (
-    df.groupby("University_GPA")["Starting_Salary"]
+    df.groupby("University_GPA")["Starting_Salary"].reset_index()
 )
 
 fig_box = go.Figure()
