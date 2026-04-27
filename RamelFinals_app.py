@@ -90,4 +90,6 @@ fig.update_xaxes(
 
 fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 
+st.plotly_chart(fig, use_container_width=True)
+
 
