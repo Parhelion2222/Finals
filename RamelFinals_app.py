@@ -61,7 +61,7 @@ with col2:
         markers=True,
         title="Work-Life Balance vs Starting Salary by Field of Study",
         labels={
-            "Work_Life_Balance_jitter": "Work-Life Balance",
+            "Work_jitter": "Work-Life Balance",
             "Starting_Salary": "Avg Starting Salary ($)",
         },
     )
