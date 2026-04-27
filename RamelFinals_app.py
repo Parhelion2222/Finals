@@ -50,7 +50,6 @@ st.plotly_chart(piechart)
 # Range Slider with Vertically Stacked Subplots
 fig = go.Figure()
 
-df = pd.read_csv("educ__1_.csv")
 cs = df[df["Field_of_Study"] == "Computer Science"]
  
 avg = (
