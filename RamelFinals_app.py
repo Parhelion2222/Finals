@@ -106,7 +106,7 @@ fig_box = px.box(
     labels={
         "University_GPA": "University GPA",
         "Starting_Salary": "Starting Salary ($)",
-    },
+    }
 )
 
 st.plotly_chart(fig_box, use_container_width=True)
