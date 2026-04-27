@@ -72,15 +72,6 @@ with col2:
         opacity=0.8
     )
     
-    fig.update_layout(
-        yaxis=dict(rangemode="tozero"),
-        xaxis=dict(
-            tickmode="linear",
-            dtick=1,
-            rangeslider=dict(visible=True, thickness=0.05),
-        ),
-    )
-    
     st.plotly_chart(fig, use_container_width=True)
 
 #Second sets of Columns
