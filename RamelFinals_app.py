@@ -76,7 +76,7 @@ fig = px.line(
 fig.update_traces(
     line=dict(width=2),
     marker=dict(size=8, opacity=0.4),
-    opacity=0.3
+    opacity=0.8
 )
 
 fig.update_layout(
