@@ -96,16 +96,20 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-#Scatter plot
-fig_box = px.box(
+#Error Bar
+fig_box = go.Figure(data = go>Scatter)
     df,
     x="University_GPA",
     y="Starting_Salary",
     title="University GPA vs Starting Salary by Field of Study",
+    error_y=dict(
+        type = 'data',
+        symmetric = False,    
+    )
     labels={
         "University_GPA": "University GPA",
         "Starting_Salary": "Starting Salary ($)",
     }
-)
+))
 
 st.plotly_chart(fig_box, use_container_width=True)
