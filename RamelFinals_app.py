@@ -97,7 +97,7 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 #Error Bar
-fig_box = px.Scatter(
+fig_box = px.scatter(
     df,
     x="University_GPA",
     y="Starting_Salary",
