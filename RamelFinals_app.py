@@ -101,7 +101,6 @@ fig_box = px.box(
     df,
     x="University_GPA",
     y="Starting_Salary",
-    opacity=0.7,
     title="University GPA vs Starting Salary by Field of Study",
     labels={
         "University_GPA": "University GPA",
