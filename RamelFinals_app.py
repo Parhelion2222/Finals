@@ -60,16 +60,24 @@ avg = (
 )
  
 fig.add_trace(go.Scatter(
-    x=cs["Career_Satisfaction"],
-    y=cs["Work_Life_Balance"],
-    mode="markers",
-    name="Individual student",
-    marker=dict(
-        color="rgba(55, 138, 221, 0.45)",
-        size=10,
-        line=dict(color="rgba(55, 138, 221, 0.8)", width=1),
-    ),
-    hovertemplate="Satisfaction: %{x}<br>Work-life balance: %{y}<extra></extra>",
+    x=avg["Career_Satisfaction"],
+    y=avg["Avg_Work_Life_Balance"],
+    mode="lines+markers",
+    name="Group average",
+    line=dict(color="#D85A30", width=3, shape="spline", smoothing=0.6),
+    marker=dict(color="#D85A30", size=10, line=dict(color="white", width=2)),
+    hovertemplate="Satisfaction: %{x}<br>Avg balance: %{y:.2f}<extra></extra>",
 ))
+
+fig.update_layout(
+    title="Career Satisfaction vs Work-Life Balance — Computer Science",
+    xaxis=dict(title="Career Satisfaction (1–10)", tickmode="linear", dtick=1),
+    yaxis=dict(title="Work-Life Balance (1–10)", tickmode="linear", dtick=1),
+    legend=dict(orientation="h", y=-0.2),
+    hovermode="closest",
+    template="plotly_white",
+)
+
+st.plotly_chart(fig, use_container_width=True)
 
 
