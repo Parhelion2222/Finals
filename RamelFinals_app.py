@@ -97,30 +97,16 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 #Error Bar
-df_gpa = (
-    df.groupby("University_GPA")["Starting_Salary"]
-    .agg(["mean", "median", "std"])
-    .reset_index()
-)
-
-fig_box = go.Figure()
-
-fig_box.add_trace(go.Scatter(
-    x=df_gpa["University_GPA"],
-    y=df_gpa["mean"],
-    mode="lines+markers",
-    error_y=dict(
-        type="data",
-        array=df_gpa["std"],
-        symmetric=True,
-        visible=True,
-    ),
-))
-
-fig_box.update_layout(
-    title="University GPA vs Starting Salary",
-    xaxis_title="University GPA",
-    yaxis_title="Starting Salary ($)",
+fig_box = px.box(
+    df,
+    x="University_GPA",
+    y="Starting_Salary",
+    opacity=0.7,
+    title="University GPA vs Starting Salary by Field of Study",
+    labels={
+        "University_GPA": "University GPA",
+        "Starting_Salary": "Starting Salary ($)",
+    },
 )
 
 st.plotly_chart(fig_box, use_container_width=True)
