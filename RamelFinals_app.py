@@ -111,8 +111,8 @@ with col2:
                   markers=True,
                   title="Average SAT Score by Age and Gender",
                   labels={
-                      "Age": "Age",
-                      "SAT_Score": "Average SAT Score"
+                      "High_School_GPA": "Average High School GPA",
+                      "University_GPA": "Average University GPA"
                   })
 
     st.plotly_chart(fig_line)
