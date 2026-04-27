@@ -16,19 +16,6 @@ def load_data():
 df = load_data()
 
 st.title("How Our Performance Determines Our Future")
-df_avg = avg_sat = df.groupby(["Age", "Gender"])["SAT_Score"].mean().reset_index()
-fig = px.line(df_avg, 
-              x="Age", 
-              y="SAT_Score", 
-              color="Gender",
-              markers=True,
-              title="Average SAT Score by Age and Gender",
-              labels={
-                  "Age": "Age",
-                  "SAT_Score": "Average SAT Score"
-              })
-
-st.plotly_chart(fig)
 
 df_scatter = px.scatter(df,
                  x="Soft_Skills_Score",
@@ -96,16 +83,35 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-#Error Bar
-fig_box = px.box(
-    df,
-    x="University_GPA",
-    y="Starting_Salary",
-    title="University GPA vs Starting Salary by Field of Study",
-    labels={
-        "University_GPA": "University GPA",
-        "Starting_Salary": "Starting Salary ($)",
-    }
-)
+#Second sets of Columns
 
-st.plotly_chart(fig_box, use_container_width=True)
+col1, col2 = st.columns(2)
+#Error Bar
+with col1:
+    fig_box = px.box(
+        df,
+        x="University_GPA",
+        y="Starting_Salary",
+        title="University GPA vs Starting Salary by Field of Study",
+        labels={
+            "University_GPA": "University GPA",
+            "Starting_Salary": "Starting Salary ($)",
+        }
+    )
+    
+    st.plotly_chart(fig_box, use_container_width=True)
+
+with col2: 
+    df_avg = avg_sat = df.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
+    fig = px.line(df_avg, 
+                  x="High_School_GPA", 
+                  y="University_GPA", 
+                  color="Gender",
+                  markers=True,
+                  title="Average SAT Score by Age and Gender",
+                  labels={
+                      "Age": "Age",
+                      "SAT_Score": "Average SAT Score"
+                  })
+    
+    st.plotly_chart(fig)
