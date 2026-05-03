@@ -38,17 +38,17 @@ with col1:
 with col2:
     st.metric(
     label="Average Soft Skills Scores",
-    value=f"${filter['Soft_Skills_Score'].mean():,.0f}"
+    value=filter['Soft_Skills_Score'].mean():,.0f}"
     )
 with col3:
     st.metric(
-    label="Average Soft Skills Scores",
-    value=f"${filter['Work_Life_Balance'].mean():,.0f}"
+    label="Average Years to Promotion",
+    value=filter['Years_to_Promotion'].mean():,.0f}"
     )
 with col4:
     st.metric(
     label="Average Work Life Balance Score",
-    value=f"${filter['Work_Life_Balance'].mean():,.0f}"
+    value=filter['Work_Life_Balance'].mean():,.0f}"
     )
 
 
