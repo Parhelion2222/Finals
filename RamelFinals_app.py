@@ -138,7 +138,10 @@ df_area = (
         .sort_values("Current_Job_Level")
     )
     
-    
+
+level_map = {"Entry": 1, "Mid": 2, "Senior": 3}
+df_area["level_num"] = df_area["Current_Job_Level"].map(level_map)
+df_area["jitter"] = df_area["level_num"] + np.random.uniform(-0.30, 0.30, len(df_area))
 df_area["jitter"] = df_area["Current_Job_Level"] + np.random.uniform(-0.30, 0.30, len(df_area))
     
 fig = fig = px.area(
