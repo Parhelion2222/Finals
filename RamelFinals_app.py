@@ -150,5 +150,11 @@ fig = fig = px.area(
     markers=True
 )
 
+fig.update_traces(
+        line=dict(width=2),
+        marker=dict(size=8, opacity=0.4),
+        opacity=0.8
+    )
+
 st.plotly_chart(fig, use_container_width=True)
 
