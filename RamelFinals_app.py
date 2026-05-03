@@ -135,7 +135,7 @@ scatter_ani = px.scatter(
     df,
     x="Starting_Salary",
     y="Work_Life_Balance",
-    animation_frame="High_School_GPA",
+    animation_frame="SAT_Score",
     animation_group="Gender",
     size="Job_Offers",
     color="Field_of_Study",
