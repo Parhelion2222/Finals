@@ -174,7 +174,7 @@ df_area = (
     
 
 fig = fig = px.area(
-    df_area.groupby(["Networking_Score", "Current_Job_Level"])["Projects_Completed"].mean().reset_index(),
+    df_area,
     x="Networking_Score",
     y="Projects_Completed",
     color = "Current_Job_Level",
