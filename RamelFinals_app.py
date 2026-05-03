@@ -147,5 +147,8 @@ fig = fig = px.area(
     title="Avg Soft Skills Score by Career Satisfaction",
     markers=True
 )
+
+fig.update_traces(stackgroup=None, fill="tozeroy")
+
 st.plotly_chart(fig, use_container_width=True)
 
