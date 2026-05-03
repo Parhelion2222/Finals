@@ -28,15 +28,31 @@ fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
 selected_field = st.selectbox("Filter by Field of Study", fields)
 filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
 
+col1, col2, col3, col4 = st.columns(4)
 
-st.metric(
-    label="Average Starting Salary",
-    value=f"${filter['Starting_Salary'].mean():,.0f}"
-)
+with col1:
+    st.metric(
+        label="Average Starting Salary",
+        value=f"${filter['Starting_Salary'].mean():,.0f}"
+    )
+with col2:
+    st.metric(
+    label="Average Soft Skills Scores",
+    value=f"${filter['Soft_Skills_Score'].mean():,.0f}"
+    )
+with col3:
+    st.metric(
+    label="Average Soft Skills Scores",
+    value=f"${filter['Work_Life_Balance'].mean():,.0f}"
+    )
+with col4:
+    st.metric(
+    label="Average Work Life Balance Score",
+    value=f"${filter['Work_Life_Balance'].mean():,.0f}"
+    )
+
 
 col1, col2, col3 = st.columns(3)
-
-
 
 #Bar Chart
 with col1:
