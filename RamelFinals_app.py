@@ -131,8 +131,18 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-fig = fig = px.area(
-     df.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean().reset_index(),
+
+df_area = (
+        df.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
+        .reset_index()
+        .sort_values("Current_Job_Level")
+    )
+    
+    
+df_area["Work_jitter"] = df_area["Work_Life_Balance"] + np.random.uniform(-0.30, 0.30, len(df_area))
+    
+fig = fig = px.line(
+    df_area,
     x="Job_Offers",
     y="Projects_Completed",
     color = "Current_Job_Level",
