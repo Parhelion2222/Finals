@@ -39,7 +39,7 @@ st.plotly_chart(df_scatter)
 if "selected_field" not in st.session_state:
     st.session_state.selected_field = None
     
-col1, col2, col3 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 #Bar Chart
 with col1:
