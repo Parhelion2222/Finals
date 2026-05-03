@@ -67,8 +67,11 @@ with col1:
     st.plotly_chart(barchart, use_container_width=True)
     
 with col2:
+    
+    filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
+    
     df_grouped = (
-        df.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
+        filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
         .mean()
         .reset_index()
         .sort_values("Work_Life_Balance")
