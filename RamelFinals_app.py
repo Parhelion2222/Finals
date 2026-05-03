@@ -28,7 +28,7 @@ fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
 selected_field = st.selectbox("Filter by Field of Study", fields)
 filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(4)
 
 with col1:
     st.metric(
@@ -38,7 +38,7 @@ with col1:
 with col2:
     st.metric(
     label="Average Soft Skills Scores",
-    value=filter['Soft_Skills_Score'].mean()
+    value=filter['Soft_Skills_Score'].mean():,.0f
     )
 with col3:
     st.metric(
@@ -50,7 +50,11 @@ with col4:
     label="Average Work Life Balance Score",
     value=filter['Work_Life_Balance'].mean()
     )
-
+with col5:
+    st.metric(
+    label="Average Career Satisfaction",
+    value=filter['Career_Satisfaction'].mean()
+    )
 
 col1, col2, col3 = st.columns(3)
 
