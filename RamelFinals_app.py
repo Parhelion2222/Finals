@@ -138,7 +138,7 @@ fig = fig = px.area(
     x="Networking_Score",
     y="Projects_Completed",
     color = "Current_Job_Level",
-    hover_data=["Sample_Size"]
+    hover_data=["Sample_Size"],
     title="Avg Soft Skills Score by Career Satisfaction",
     markers=True
 )
