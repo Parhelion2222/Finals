@@ -176,14 +176,14 @@ df_area = (
 fig_area = px.area(
     filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
         .reset_index()
-        .sort_values("Current_Job_Level"),
-    x="Job_Offers",          # ← was "Networking_Score" which doesn't exist in groupby
+        .sort_values("Current_Job_Level", ascending=False), 
+    x="Job_Offers",
     y="Projects_Completed",
     color="Current_Job_Level",
     title="Avg Projects Completed by Job Offers",
     markers=True
 )
 
-fig_area.update_traces(stackgroup=None, fill="tozeroy")
+fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
 st.plotly_chart(fig_area, use_container_width=True)
 
