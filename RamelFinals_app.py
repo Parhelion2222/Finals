@@ -132,13 +132,10 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 fig = fig = px.area(
-     df.groupby(["Networking_Score", "Current_Job_Level"])["Projects_Completed"].agg(
-    Projects_Completed="mean",
-    Sample_Size="count").reset_index(),
-    x="Networking_Score",
+     df.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean().reset_index(),
+    x="Job_Offers",
     y="Projects_Completed",
     color = "Current_Job_Level",
-    hover_data=["Sample_Size"],
     title="Avg Soft Skills Score by Career Satisfaction",
     markers=True
 )
