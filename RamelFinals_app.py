@@ -189,7 +189,7 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 df_area = (
-        df.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
+        filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
         .reset_index()
         .sort_values("Current_Job_Level")
     )
