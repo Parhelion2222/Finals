@@ -131,19 +131,7 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-scatter_ani = px.scatter(
-    df,
-    x="Starting_Salary",
-    y="Work_Life_Balance",
-    animation_frame="SAT_Score",
-    animation_group="Gender",
-    size="Job_Offers",
-    color="Field_of_Study",
-    hover_name="Gender",
-    size_max=30,
-    range_x=[40000, 150000],
-    range_y=[0, 11],
-    title="Career Satisfaction vs Work-Life Balance over Starting Salary"
-)
-
-st.plotly_chart(scatter_ani, use_container_width=True)
+fig = px.violin(df, x="Current_Job_Level", y="Career_Satisfaction",
+                color="Current_Job_Level", box=True,
+                title="Career Satisfaction by Job Level")
+st.plotly_chart(fig, use_container_width=True)
