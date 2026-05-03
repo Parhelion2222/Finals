@@ -98,16 +98,14 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 with col3:
-    fig = px.box(
-        df,
-        x="University_GPA",
-        y="Starting_Salary",
-        title="University GPA to Starting Salary",
-        labels={
-            "University_GPA": "University GPA",
-            "Starting_Salary": "Starting Salary ($)",
-        },
-        points=False,
+    fig3 = px.box(
+    df,
+    x="University_GPA",
+    y="Starting_Salary",
+    color="Field_of_Study",
+    title="University GPA to Starting Salary",
+    labels={"University_GPA": "University GPA", "Starting_Salary": "Starting Salary ($)"},
+    points="all", 
     )
     
     if selected_field != "All":
@@ -118,6 +116,7 @@ with col3:
         
     fig.update_layout(yaxis=dict(rangemode="tozero"))
     st.plotly_chart(fig, use_container_width=True)
+    
     # reset button
     if st.session_state.selected_field:
         if st.button("Reset Filter"):
