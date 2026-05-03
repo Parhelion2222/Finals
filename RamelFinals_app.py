@@ -5,6 +5,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
+from streamlit_plotly_events import plotly_events
 
 st.set_page_config(layout="wide")
 @st.cache_data
@@ -19,10 +20,6 @@ st.title("How Our Performance Determines Our Future")
 
 
 #KPI
-
-# Unpivot data frames
-
-
 
 
 #Scatter
@@ -39,6 +36,8 @@ df_scatter = px.scatter(df,
 st.plotly_chart(df_scatter)
 
 #Side-by-Side
+if "selected_field" not in st.session_state:
+    st.session_state.selected_field = None
 col1, col2 = st.columns(2)
 
 #Bar Chart
