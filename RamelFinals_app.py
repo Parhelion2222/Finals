@@ -98,9 +98,10 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 with col3:
-# need color="Field_of_Study" for fade/highlight to work
+    filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
+
     fig_box = px.box(
-        df,
+        filter,
         x="University_GPA",
         y="Starting_Salary",
         title="University GPA to Starting Salary",
