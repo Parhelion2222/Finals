@@ -151,7 +151,7 @@ with col1:
 
 
 with col2: 
-    df_avg = avg_sat = df.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
+    df_avg = filter.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
     fig_line = px.line(df_avg, 
                   x="High_School_GPA", 
                   y="University_GPA", 
