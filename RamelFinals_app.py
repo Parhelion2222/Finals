@@ -132,7 +132,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 scatter_ani = px.scatter(df, x="Career_Satisfaction", y="Work_Life_Balance", animation_frame="Starting_Salary", animation_group="Gender",
-           size="pop", color="Field_of_Study", hover_name="Gender",
-           log_x=True, size_max=55, range_x=[0,15], range_y=[0,15])
+           size="Job_Offers", color="Field_of_Study", hover_name="Gender",
+           log_x=True, size_max=30, range_x=[0,11], range_y=[0,11])
 
 st.plotly_chart(scatter_ani, use_container_width=True)
