@@ -38,6 +38,7 @@ st.plotly_chart(df_scatter)
 #Side-by-Side
 if "selected_field" not in st.session_state:
     st.session_state.selected_field = None
+    
 col1, col2 = st.columns(2)
 
 #Bar Chart
@@ -57,11 +58,6 @@ with col1:
     if clicked:
         idx = clicked[0]["pointIndex"]
         st.session_state.selected_field = df_bar.iloc[idx]["Field_of_Study"]
-
-
-#Range Slider with Vertically Stacked Subplots
-if "selected_field" not in st.session_state:
-    st.session_state.selected_field = None
     
 with col2:
     df_grouped = (
