@@ -20,6 +20,11 @@ st.title("How Our Performance Determines Our Future")
 
 #KPI
 
+# Unpivot data frames
+
+
+
+
 #Scatter
 df_scatter = px.scatter(df,
                  x="Soft_Skills_Score",
@@ -40,12 +45,25 @@ col1, col2 = st.columns(2)
 with col1:
     df_bar = df.groupby(["Field_of_Study", ])["Career_Satisfaction"].mean().reset_index()
 
-    barchart = px.bar(df_bar, x='Field_of_Study', y='Career_Satisfaction', title='Starting Salary by Field of Study')
+    barchart = px.bar(df_bar, x='Field_of_Study', 
+                      y='Career_Satisfaction', 
+                      title='Starting Salary by Field of Study',
+                      color = 'Field_of_Study'
+                     )
+    barchart.update_layout(showlegend=False)
 
-    st.plotly_chart(barchart) 
+    #Selecting fields
+    clicked = plotly_events(barchart, click_event=True, key="bar_click")
+    
+    if clicked:
+        idx = clicked[0]["pointIndex"]
+        st.session_state.selected_field = df_bar.iloc[idx]["Field_of_Study"]
 
 
 #Range Slider with Vertically Stacked Subplots
+if "selected_field" not in st.session_state:
+    st.session_state.selected_field = None
+    
 with col2:
     df_grouped = (
         df.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
@@ -53,7 +71,6 @@ with col2:
         .reset_index()
         .sort_values("Work_Life_Balance")
     )
-    
     
     df_grouped["Work_jitter"] = df_grouped["Work_Life_Balance"] + np.random.uniform(-0.30, 0.30, len(df_grouped))
     
@@ -77,6 +94,13 @@ with col2:
     )
     
     st.plotly_chart(fig, use_container_width=True)
+
+# reset button
+if st.session_state.selected_field:
+    if st.button("Reset Filter"):
+        st.session_state.selected_field = None
+        st.rerun()
+
 
 #Second sets of Columns
 
