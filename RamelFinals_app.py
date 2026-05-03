@@ -110,5 +110,23 @@ with col2:
     st.plotly_chart(fig_line)
 
 
-heat = px.imshow(df)
-st.plotly_chart(heat)
+numeric_df = df.select_dtypes(include='number')
+
+corr = numeric_df.corr()
+
+fig = px.imshow(
+    corr,
+    text_auto=".2f",
+    color_continuous_scale="RdBu_r",
+    zmin=-1, zmax=1,
+    aspect="auto",
+    title="Feature Correlation Heatmap"
+)
+
+fig.update_layout(
+    width=900,
+    height=700,
+    xaxis_tickangle=-45
+)
+
+st.plotly_chart(fig, use_container_width=True)
