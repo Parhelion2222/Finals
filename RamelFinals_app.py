@@ -17,6 +17,18 @@ df = load_data()
 
 st.title("How Our Performance Determines Our Future")
 
+
+#KPI
+avg_salary = filtered_df['Starting_Salary'].mean()
+avg_offers = filtered_df['Job_Offers'].mean()
+avg_satisfaction = filtered_df['Career_Satisfaction'].mean()
+avg_promotion = filtered_df['Years_to_Promotion'].mean()
+
+fig = make_subplots(
+    rows=1, cols=4,
+    subplot_titles=("Avg Salary", "Avg Job Offers", "Career Satisfaction", "Yrs to Promotion")
+)
+
 df_scatter = px.scatter(df,
                  x="Soft_Skills_Score",
                  y="Years_to_Promotion",
