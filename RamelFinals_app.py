@@ -30,7 +30,7 @@ def dashboard(filtered_df):
         subplot_titles=("Avg Salary", "Avg Job Offers", "Career Satisfaction", "Yrs to Promotion")
     )
     
-     fig.update_layout(height=200, margin=dict(t=40, b=0, l=20, r=20))
+    fig.update_layout(height=200, margin=dict(t=40, b=0, l=20, r=20))
 
     return fig
 
