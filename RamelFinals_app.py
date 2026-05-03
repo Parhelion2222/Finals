@@ -34,9 +34,9 @@ col1, col2 = st.columns(2)
 
 #Bar Chart
 with col1:
-    df_bar = df.groupby(["Field_of_Study", ])["Starting_Salary"].mean().reset_index()
+    df_bar = df.groupby(["Field_of_Study", ])["Career_Satisfaction"].mean().reset_index()
 
-    barchart = px.bar(df_bar, x='Field_of_Study', y='Starting_Salary', title='Starting Salary by Field of Study')
+    barchart = px.bar(df_bar, x='Field_of_Study', y='Career_Satisfaction', title='Starting Salary by Field of Study')
 
     st.plotly_chart(barchart) 
 
