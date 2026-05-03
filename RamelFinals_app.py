@@ -132,6 +132,8 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 df = px.data.gapminder()
-px.scatter(df, x="Career_Satisfaction", y="Work_Life_Balance", animation_frame="Starting_Salary", animation_group="Gender",
+scatter_ani = px.scatter(df, x="Career_Satisfaction", y="Work_Life_Balance", animation_frame="Starting_Salary", animation_group="Gender",
            size="pop", color="Field_of_Study", hover_name="Gender",
            log_x=True, size_max=55, range_x=[1,15], range_y=[1,15])
+
+st.plotly_chart(scatter_ani)
