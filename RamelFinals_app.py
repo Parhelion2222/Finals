@@ -43,21 +43,28 @@ col1, col2 = st.columns(2)
 
 #Bar Chart
 with col1:
-    df_bar = df.groupby(["Field_of_Study", ])["Career_Satisfaction"].mean().reset_index()
+    df_bar = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
 
-    barchart = px.bar(df_bar, x='Field_of_Study', 
-                      y='Career_Satisfaction', 
-                      title='Starting Salary by Field of Study',
-                      color = 'Field_of_Study'
-                     )
-    barchart.update_layout(showlegend=False)
+    fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
+    selected_field = st.selectbox("Filter by Field of Study", fields)
 
-    #Selecting fields
-    clicked = plotly_events(barchart, click_event=True, key="bar_click")
-    
-    if clicked:
-        idx = clicked[0]["pointIndex"]
-        st.session_state.selected_field = df_bar.iloc[idx]["Field_of_Study"]
+    barchart = px.bar(
+        df_bar,
+        x="Field_of_Study",
+        y="Career_Satisfaction",
+        title="Career Satisfaction by Field of Study",
+        color="Field_of_Study",
+    )
+
+    # fade unselected bars instead of using a color column
+    if selected_field != "All":
+        barchart.update_traces(opacity=0.3)
+        barchart.for_each_trace(
+            lambda t: t.update(opacity=1.0) if t.name == selected_field else None
+        )
+
+    barchart.update_layout(showlegend=False, xaxis_tickangle=-45)
+    st.plotly_chart(barchart, use_container_width=True)
     
 with col2:
     df_grouped = (
