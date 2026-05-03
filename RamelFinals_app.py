@@ -131,7 +131,12 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.violin(df, x="Current_Job_Level", y="Career_Satisfaction",
-                color="Current_Job_Level", box=True,
-                title="Career Satisfaction by Job Level")
+fig = fig = px.area(
+    df.groupby("Career_Satisfaction")["Soft_Skills_Score"].mean().reset_index(),
+    x="Career_Satisfaction",
+    y="Soft_Skills_Score",
+    title="Avg Soft Skills Score by Career Satisfaction",
+    markers=True
+)
 st.plotly_chart(fig, use_container_width=True)
+
