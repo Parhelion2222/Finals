@@ -108,3 +108,7 @@ with col2:
                   })
 
     st.plotly_chart(fig_line)
+
+
+heat = px.imshow(df)
+st.plotly_chart(heat)
