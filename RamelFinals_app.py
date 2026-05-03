@@ -31,7 +31,7 @@ filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_
 
 st.metric(
     label="Average Starting Salary",
-    value=f"${df['Starting_Salary'].mean():,.0f}"
+    value=f"${filter['Starting_Salary'].mean():,.0f}"
 )
 
 col1, col2, col3 = st.columns(3)
