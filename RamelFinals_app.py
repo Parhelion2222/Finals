@@ -30,7 +30,7 @@ def dashboard(filtered_df):
         subplot_titles=("Avg Salary", "Avg Job Offers", "Career Satisfaction", "Yrs to Promotion")
     )
     
-st.plotly_chart(dashboard, use_container_width=True)
+    st.plotly_chart(dashboard, use_container_width=True)
 
 #Scatter
 df_scatter = px.scatter(df,
