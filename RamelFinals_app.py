@@ -135,20 +135,20 @@ with col3:
 col1, col2= st.columns(2)
 #Error Bar
 with col1:
-    fig_box2 = px.box(
-        df,
-        x="University_GPA",
-        y="Starting_Salary",
-        title="University GPA to Starting Salary",
-        labels={
-            "University_GPA": "University GPA",
-            "Starting_Salary": "Starting Salary ($)",
-        },
-        points=False,
+    fig_area = px.area(
+    filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
+    .reset_index()
+    .sort_values("Current_Job_Level", ascending=False), 
+    x="Job_Offers",
+    y="Projects_Completed",
+    color="Current_Job_Level",
+    title="Avg Projects Completed by Job Offers",
+    markers=True
     )
+    
+    fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
+    st.plotly_chart(fig_area, use_container_width=True)
 
-    fig_box.update_layout(yaxis=dict(rangemode="tozero"))
-    st.plotly_chart(fig_box2, use_container_width=True)
 
 with col2: 
     df_avg = avg_sat = df.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
@@ -166,24 +166,4 @@ with col2:
     st.plotly_chart(fig_line)
 
 
-df_area = (
-        filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
-        .reset_index()
-        .sort_values("Current_Job_Level")
-    )
-    
-
-fig_area = px.area(
-    filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
-        .reset_index()
-        .sort_values("Current_Job_Level", ascending=False), 
-    x="Job_Offers",
-    y="Projects_Completed",
-    color="Current_Job_Level",
-    title="Avg Projects Completed by Job Offers",
-    markers=True
-)
-
-fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
-st.plotly_chart(fig_area, use_container_width=True)
 
