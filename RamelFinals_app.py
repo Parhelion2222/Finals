@@ -41,8 +41,8 @@ if "selected_field" not in st.session_state:
 
 df_bar = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
 
-    fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
-    selected_field = st.selectbox("Filter by Field of Study", fields)
+fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
+selected_field = st.selectbox("Filter by Field of Study", fields)
 
 col1, col2, col3 = st.columns(3)
 
