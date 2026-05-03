@@ -132,7 +132,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 fig = fig = px.area(
-     df.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].sum().reset_index(),
+     df.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean().reset_index(),
     x="Job_Offers",
     y="Projects_Completed",
     color = "Current_Job_Level",
