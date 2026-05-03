@@ -98,25 +98,23 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 with col3:
+# need color="Field_of_Study" for fade/highlight to work
     fig3 = px.box(
-    df,
-    x="University_GPA",
-    y="Starting_Salary",
-    color="Field_of_Study",
-    title="University GPA to Starting Salary",
-    labels={"University_GPA": "University GPA", "Starting_Salary": "Starting Salary ($)"},
-    points="all", 
+        df,
+        x="University_GPA",
+        y="Starting_Salary",
+        color="Field_of_Study",
+        title="University GPA to Starting Salary",
+        labels={"University_GPA": "University GPA", "Starting_Salary": "Starting Salary ($)"},
+        points=False,
     )
-    
     if selected_field != "All":
-        fig.update_traces(opacity=0.3)
-        fig.for_each_trace(
+        fig3.update_traces(opacity=0.3)
+        fig3.for_each_trace(
             lambda t: t.update(opacity=1.0) if t.name == selected_field else None
         )
-        
-    fig.update_layout(yaxis=dict(rangemode="tozero"))
-    st.plotly_chart(fig, use_container_width=True)
-    
+    fig3.update_layout(showlegend=False, yaxis=dict(rangemode="tozero"))
+    st.plotly_chart(fig3, use_container_width=True)
     # reset button
     if st.session_state.selected_field:
         if st.button("Reset Filter"):
