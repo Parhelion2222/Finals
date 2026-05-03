@@ -43,6 +43,7 @@ df_bar = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index(
 
 fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
 selected_field = st.selectbox("Filter by Field of Study", fields)
+filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
 
 col1, col2, col3 = st.columns(3)
 
@@ -68,8 +69,6 @@ with col1:
     st.plotly_chart(barchart, use_container_width=True)
     
 with col2:
-    
-    filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
     
     df_grouped = (
         filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
@@ -102,7 +101,6 @@ with col2:
     st.plotly_chart(fig, use_container_width=True)
 
 with col3:
-    filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
 
     fig_box = px.box(
         filter,
