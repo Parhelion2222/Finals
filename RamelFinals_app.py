@@ -97,16 +97,31 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-# reset button
-if st.session_state.selected_field:
-    if st.button("Reset Filter"):
-        st.session_state.selected_field = None
-        st.rerun()
+with col3:
+    fig_box = px.box(
+        df,
+        x="University_GPA",
+        y="Starting_Salary",
+        title="University GPA to Starting Salary",
+        labels={
+            "University_GPA": "University GPA",
+            "Starting_Salary": "Starting Salary ($)",
+        },
+        points=False,
+    )
+
+    fig_box.update_layout(yaxis=dict(rangemode="tozero"))
+    st.plotly_chart(fig_box, use_container_width=True)
+    # reset button
+    if st.session_state.selected_field:
+        if st.button("Reset Filter"):
+            st.session_state.selected_field = None
+            st.rerun()
 
 
 #Second sets of Columns
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(2)
 #Error Bar
 with col1:
     fig_box = px.box(
