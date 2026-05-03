@@ -139,7 +139,7 @@ df_area = (
     )
     
     
-df_area["jitter"] = df_area["Work_Life_Balance"] + np.random.uniform(-0.30, 0.30, len(df_area))
+df_area["jitter"] = df_area["Current_Job_Level"] + np.random.uniform(-0.30, 0.30, len(df_area))
     
 fig = fig = px.area(
     df_area,
