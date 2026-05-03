@@ -133,15 +133,15 @@ st.plotly_chart(fig, use_container_width=True)
 
 scatter_ani = px.scatter(
     df,
-    x="Career_Satisfaction",
+    x="Starting_Salary",
     y="Work_Life_Balance",
-    animation_frame="Starting_Salary",
+    animation_frame="Career_Satisfaction",
     animation_group="Gender",
     size="Job_Offers",
     color="Field_of_Study",
     hover_name="Gender",
     size_max=30,
-    range_x=[0, 11],
+    range_x=[40000, 150000],
     range_y=[0, 11],
     title="Career Satisfaction vs Work-Life Balance over Starting Salary"
 )
