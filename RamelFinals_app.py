@@ -18,24 +18,7 @@ df = load_data()
 
 st.title("How Our Performance Determines Our Future")
 
-
-#KPI
-
-
-#Scatter
-df_scatter = px.scatter(df,
-                 x="Soft_Skills_Score",
-                 y="Years_to_Promotion",
-                 title="Soft Skills Score vs Years to Promotion",
-                 labels={
-                     "Soft_Skills_Score": "Soft Skills Score",
-                     "Years_to_Promotion": "Years to Promotion"
-                 },
-                 opacity=0.7)
-
-st.plotly_chart(df_scatter)
-
-#Side-by-Side
+#Filter bar
 if "selected_field" not in st.session_state:
     st.session_state.selected_field = None
 
@@ -45,7 +28,15 @@ fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
 selected_field = st.selectbox("Filter by Field of Study", fields)
 filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
 
+
+st.metric(
+    label="Average Starting Salary",
+    value=f"${df['Starting_Salary'].mean():,.0f}"
+)
+
 col1, col2, col3 = st.columns(3)
+
+
 
 #Bar Chart
 with col1:
