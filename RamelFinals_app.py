@@ -28,7 +28,7 @@ fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
 selected_field = st.selectbox("Filter by Field of Study", fields)
 filter = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
 
-col1, col2, col3, col4, col5 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
     st.metric(
