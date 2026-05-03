@@ -135,6 +135,7 @@ fig = fig = px.area(
     df.groupby("Career_Satisfaction")["Soft_Skills_Score"].mean().reset_index(),
     x="Career_Satisfaction",
     y="Soft_Skills_Score",
+    color = "Current_Job_Level"
     title="Avg Soft Skills Score by Career Satisfaction",
     markers=True
 )
