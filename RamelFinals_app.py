@@ -29,11 +29,13 @@ def dashboard(filtered_df):
         rows=1, cols=4,
         subplot_titles=("Avg Salary", "Avg Job Offers", "Career Satisfaction", "Yrs to Promotion")
     )
+    
+     fig.update_layout(height=200, margin=dict(t=40, b=0, l=20, r=20))
 
     return fig
 
 
-fig= dashboard(filtered_df)    
+fig = dashboard(filtered_df)    
 st.plotly_chart(fig, use_container_width=True)
 
 #Scatter
