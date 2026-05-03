@@ -139,25 +139,13 @@ df_area = (
     )
     
 
-level_map = {"Entry": 1, "Mid": 2, "Senior": 3}
-df_area["level_num"] = df_area["Current_Job_Level"].map(level_map)
-df_area["jitter"] = df_area["level_num"] + np.random.uniform(-0.30, 0.30, len(df_area))
-df_area["jitter"] = df_area["Current_Job_Level"] + np.random.uniform(-0.30, 0.30, len(df_area))
-    
 fig = fig = px.area(
-    df_area,
-    x="jitter",
+     df.groupby(["Networking_Score", "Current_Job_Level"])["Projects_Completed"].mean().reset_index(),
+    x="Networking_Score",
     y="Projects_Completed",
     color = "Current_Job_Level",
     title="Avg Soft Skills Score by Career Satisfaction",
     markers=True
 )
-
-fig.update_traces(
-        line=dict(width=2),
-        marker=dict(size=8, opacity=0.4),
-        opacity=0.8
-    )
-
 st.plotly_chart(fig, use_container_width=True)
 
