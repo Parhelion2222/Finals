@@ -19,24 +19,6 @@ st.title("How Our Performance Determines Our Future")
 
 
 #KPI
-def dashboard(filtered_df):
-    avg_salary = filtered_df['Starting_Salary'].mean()
-    avg_offers = filtered_df['Job_Offers'].mean()
-    avg_satisfaction = filtered_df['Career_Satisfaction'].mean()
-    avg_promotion = filtered_df['Years_to_Promotion'].mean()
-    
-    fig = make_subplots(
-        rows=1, cols=4,
-        subplot_titles=("Avg Salary", "Avg Job Offers", "Career Satisfaction", "Yrs to Promotion")
-    )
-    
-    fig.update_layout(height=200, margin=dict(t=40, b=0, l=20, r=20))
-
-    return fig
-
-
-fig = dashboard(filtered_df)    
-st.plotly_chart(fig, use_container_width=True)
 
 #Scatter
 df_scatter = px.scatter(df,
