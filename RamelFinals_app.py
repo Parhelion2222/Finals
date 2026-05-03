@@ -33,7 +33,7 @@ def dashboard(filtered_df):
     return fig
 
 
-fig=dashboard(filtered)    
+fig= dashboard(filtered_df)    
 st.plotly_chart(fig, use_container_width=True)
 
 #Scatter
