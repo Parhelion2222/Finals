@@ -72,7 +72,7 @@ donut = px.pie(
     hole=0.5, 
     )
     
-donut.update_layout(
+donut.update_traces(
     height=1000,                        
     margin=dict(t=50, b=50, l=50, r=50),
     showlegend=False,
