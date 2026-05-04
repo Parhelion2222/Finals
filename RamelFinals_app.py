@@ -24,8 +24,6 @@ with col1:
     if "selected_field" not in st.session_state:
         st.session_state.selected_field = None
     
-    df_bar = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
-    
     fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
     selected_field = st.selectbox("Filter by Field of Study", fields)
     filter_field = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
@@ -72,8 +70,10 @@ col1, col2 = st.columns(2)
 
 with col1:
     #Donut chart
+    df_donut = filter.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
+    
     donut = px.pie(
-        df_bar,
+        df_donut,
         names="Field_of_Study",
         values="Career_Satisfaction",
         title="Career Satisfaction by Field of Study",
