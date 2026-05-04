@@ -139,22 +139,6 @@ with col2:
     )
     
     st.plotly_chart(fig, use_container_width=True)
-    
-    #Area chart
-    fig_area = px.area(
-        filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
-        .reset_index()
-        .sort_values("Current_Job_Level", ascending=False), 
-        x="Job_Offers",
-        y="Projects_Completed",
-        color="Current_Job_Level",
-        title="Avg Projects Completed by Job Offers",
-        markers=True
-    )
-    
-    fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
-    st.plotly_chart(fig_area, use_container_width=True)
-
 
     #Line Chart
     df_avg = filter.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
@@ -171,6 +155,20 @@ with col2:
 
     st.plotly_chart(fig_line)
 
+#Area chart
+fig_area = px.area(
+    filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
+    .reset_index()
+    .sort_values("Current_Job_Level", ascending=False), 
+    x="Job_Offers",
+    y="Projects_Completed",
+    color="Current_Job_Level",
+    title="Avg Projects Completed by Job Offers",
+    markers=True
+)
+
+fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
+st.plotly_chart(fig_area, use_container_width=True)
    
 
 
