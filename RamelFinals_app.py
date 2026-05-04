@@ -76,6 +76,7 @@ with col1:
     )
     
     donut.update_traces(
+        showlegend=False,
         textinfo="label+percent",
         textposition="inside",
         pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
