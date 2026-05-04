@@ -73,14 +73,17 @@ donut = px.pie(
     )
     
 donut.update_traces(
-    height=1000,                        
-    margin=dict(t=50, b=50, l=50, r=50),
     showlegend=False,
     textinfo="label+percent",
     textposition="inside",
     pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
     )
-    
+
+donut.update_layout(
+    height=1000,                        
+    margin=dict(t=50, b=50, l=50, r=50),
+)
+
 st.plotly_chart(donut, use_container_width=True)
 
 col1, col2 = st.columns(2)
