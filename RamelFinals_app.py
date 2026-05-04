@@ -165,6 +165,10 @@ fig_area = px.area(
     color="Current_Job_Level",
     title="Avg Projects Completed by Job Offers",
     markers=True
+    labels={
+            "Projects_Completed": "Projects Completed",
+            "Job_Offers": "Job Offers",
+        }
 )
 
 fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
