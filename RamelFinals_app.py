@@ -89,7 +89,7 @@ with col1:
         showlegend=False,
         textinfo="label+percent",
         textposition="inside",
-        pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
+        pull=[0.1 if f == selected_field else 0 for f in df_donut["Field_of_Study"]]
         )
     
     st.plotly_chart(donut, use_container_width=True)
