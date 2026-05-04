@@ -75,10 +75,10 @@ with col1:
             lambda t: t.update(opacity=1.0) if t.name == selected_field else None
         )
 
-      barchart.update_layout(
-        showlegend=False,
-        xaxis_tickangle=-45,
-        height=800 
+    barchart.update_layout(
+    showlegend=False,
+    xaxis_tickangle=-45,
+    height=800 
     )
     st.plotly_chart(barchart, use_container_width=True)
     
