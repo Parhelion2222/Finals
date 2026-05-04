@@ -80,7 +80,8 @@ with col1:
     st.plotly_chart(barchart, use_container_width=True)
     
 with col2:
-    
+
+    #linechart 
     df_grouped = (
         filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
         .mean()
@@ -111,8 +112,7 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-with col3:
-
+    #Boxplot
     fig_box = px.box(
         filter,
         x="University_GPA",
@@ -132,9 +132,6 @@ with col3:
         if st.button("Reset Filter"):
             st.session_state.selected_field = None
             st.rerun()
-
-
-
 
 
 
