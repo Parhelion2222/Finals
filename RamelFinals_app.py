@@ -100,7 +100,7 @@ with col1:
         x="University_GPA",
         y="Starting_Salary",
         title="University GPA to Starting Salary",
-        color_discrete_sequence=['red'],
+        color_discrete_sequence=px.colors.qualitative.Safe,
         labels={
             "University_GPA": "University GPA",
             "Starting_Salary": "Starting Salary ($)",
