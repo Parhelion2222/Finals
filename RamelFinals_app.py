@@ -38,7 +38,7 @@ with col1:
 with col2:
     st.metric(
     label="Average Soft Skills Scores",
-    value=filter['Soft_Skills_Score'].mean()
+    value=f"{filter['Soft_Skills_Score'].mean():,.0f}"
     )
 with col3:
     st.metric(
