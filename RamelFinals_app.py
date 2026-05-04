@@ -15,7 +15,7 @@ def load_data():
 
 df = load_data()
 
-st.title("How Our Performance Determines Our Future")
+st.title("Different Aspects Shapes Different Future")
 
 #Filter barS
 col1, col2 = st.columns(2)
