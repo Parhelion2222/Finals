@@ -150,21 +150,18 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-    #Line Chart
-    fig_scatter = px.scatter(
+    fig_violin = px.violin(
         filter,
-        x="High_School_GPA",
+        x="Gender",
         y="University_GPA",
         color="Gender",
         color_discrete_sequence=px.colors.qualitative.Safe,
-        title="High School GPA vs University GPA by Gender",
-        labels={
-            "High_School_GPA": "High School GPA",
-            "University_GPA": "University GPA"
-        },
-        opacity=0.6,
+        title="University GPA Distribution by Gender",
+        labels={"University_GPA": "University GPA"},
+        box=True,
     )
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    
+    st.plotly_chart(fig_violin, use_container_width=True)
 
 #Area chart
 fig_area = px.area(
