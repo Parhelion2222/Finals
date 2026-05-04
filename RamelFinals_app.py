@@ -152,7 +152,7 @@ with col2:
 
     #Line Chart
     df_avg = filter.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
-    fig_line = px.line(df_avg, 
+    fig_line = px.scatter(df_avg, 
         x="High_School_GPA", 
         y="University_GPA", 
         color="Gender",
