@@ -78,7 +78,7 @@ with col1:
         values="Career_Satisfaction",
         title="Career Satisfaction by Field of Study",
         hole=0.5, 
-        color_discrete_sequence=px.colors.qualitative.Viridis,
+        color_discrete_sequence=px.colors.qualitative.viridis,
         labels={
         "Field_of_Study": "Field of Study",
         "Career_Satisfaction": "Career Satisfaction"
@@ -131,7 +131,7 @@ with col2:
         df_grouped,
         x="Work_jitter",  
         y="Starting_Salary",
-        color_discrete_sequence=px.colors.qualitative.Viridis,
+        color_discrete_sequence=px.colors.qualitative.viridis,
         markers=True,
         title="Work-Life Balance by Starting Salary",
         labels={
