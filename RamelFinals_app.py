@@ -17,22 +17,26 @@ df = load_data()
 
 st.title("How Our Performance Determines Our Future")
 
-#Filter bar
-if "selected_field" not in st.session_state:
-    st.session_state.selected_field = None
+#Filter barS
+col1, col2 = st.columns(2)
 
-df_bar = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
-
-fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
-selected_field = st.selectbox("Filter by Field of Study", fields)
-filter_field = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
-
-if "selected_level" not in st.session_state:
-    st.session_state.selected_field = None
-
-level = ["All"] + sorted(filter_field["Current_Job_Level"].unique().tolist())
-selected_level = st.selectbox("Filter by Job Level", level)
-filter = df if selected_level == "All" else df[df["Current_Job_Level"] == selected_level]
+with col1:
+    if "selected_field" not in st.session_state:
+        st.session_state.selected_field = None
+    
+    df_bar = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
+    
+    fields = ["All"] + sorted(df["Field_of_Study"].unique().tolist())
+    selected_field = st.selectbox("Filter by Field of Study", fields)
+    filter_field = df if selected_field == "All" else df[df["Field_of_Study"] == selected_field]
+    
+with col2:
+    if "selected_level" not in st.session_state:
+        st.session_state.selected_field = None
+    
+    level = ["All"] + sorted(filter_field["Current_Job_Level"].unique().tolist())
+    selected_level = st.selectbox("Filter by Job Level", level)
+    filter = df if selected_level == "All" else df[df["Current_Job_Level"] == selected_level]
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
