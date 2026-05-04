@@ -149,15 +149,15 @@ with col2:
 
     #Line Chart
     df_avg = filter.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
-        fig_line = px.line(df_avg, 
-                  x="High_School_GPA", 
-                  y="University_GPA", 
-                  color="Gender",
-                  markers=True,
-                  title="Average University GPA by High School GPA and Gender",
-                  labels={
-                      "High_School_GPA": "Average High School GPA",
-                      "University_GPA": "Average University GPA"
+    fig_line = px.line(df_avg, 
+        x="High_School_GPA", 
+        y="University_GPA", 
+        color="Gender",
+        markers=True,
+        title="Average University GPA by High School GPA and Gender",
+        labels={
+          "High_School_GPA": "Average High School GPA",
+          "University_GPA": "Average University GPA"
                   })
 
     st.plotly_chart(fig_line)
