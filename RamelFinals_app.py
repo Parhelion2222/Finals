@@ -37,25 +37,24 @@ with col1:
     )
 with col2:
     st.metric(
-    label="Average Soft Skills Scores",
-    value=f"{filter['Soft_Skills_Score'].mean():,.0f}"
+        label="Average Soft Skills Scores",
+        value=f"{filter['Soft_Skills_Score'].mean():.2f}"
     )
 with col3:
     st.metric(
-    label="Average Years to Promotion",
-    value=filter['Years_to_Promotion'].mean()
+        label="Average Years to Promotion",
+        value=f"{filter['Years_to_Promotion'].mean():.2f}"
     )
 with col4:
     st.metric(
-    label="Average Work Life Balance Score",
-    value=filter['Work_Life_Balance'].mean()
+        label="Average Work Life Balance Score",
+        value=f"{filter['Work_Life_Balance'].mean():.2f}"
     )
 with col5:
     st.metric(
-    label="Average Career Satisfaction",
-    value=filter['Career_Satisfaction'].mean()
+        label="Average Career Satisfaction",
+        value=f"{filter['Career_Satisfaction'].mean():.2f}"
     )
-
 col1, col2 = st.columns(2)
 
 #Bar Chart
