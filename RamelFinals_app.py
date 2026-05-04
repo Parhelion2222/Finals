@@ -91,6 +91,22 @@ with col1:
     
     st.plotly_chart(donut, use_container_width=True)
 
+    #Boxplot
+    fig_box = px.box(
+        filter,
+        x="University_GPA",
+        y="Starting_Salary",
+        title="University GPA to Starting Salary",
+        labels={
+            "University_GPA": "University GPA",
+            "Starting_Salary": "Starting Salary ($)",
+        },
+        points=False,
+    )
+
+    fig_box.update_layout(yaxis=dict(rangemode="tozero"))
+    st.plotly_chart(fig_box, use_container_width=True)
+
     
 with col2:
     #linechart 
@@ -123,22 +139,6 @@ with col2:
     )
     
     st.plotly_chart(fig, use_container_width=True)
-
-    #Boxplot
-    fig_box = px.box(
-        filter,
-        x="University_GPA",
-        y="Starting_Salary",
-        title="University GPA to Starting Salary",
-        labels={
-            "University_GPA": "University GPA",
-            "Starting_Salary": "Starting Salary ($)",
-        },
-        points=False,
-    )
-
-    fig_box.update_layout(yaxis=dict(rangemode="tozero"))
-    st.plotly_chart(fig_box, use_container_width=True)
     
     #Area chart
     fig_area = px.area(
