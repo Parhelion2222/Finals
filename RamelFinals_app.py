@@ -72,17 +72,8 @@ with col1:
         names="Field_of_Study",
         values="Career_Satisfaction",
         title="Career Satisfaction by Field of Study",
-        hole=0.5,  # ← makes it a donut (0 = full pie, 1 = no chart)
+        hole=0.5, 
     )
-    
-    if selected_field != "All":
-        donut.update_traces(
-            opacity=0.3,
-            pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]  # pulls out selected slice
-        )
-        donut.for_each_trace(
-            lambda t: t.update(opacity=1.0) if t.name == selected_field else None
-        )
     
     donut.update_traces(
         opacity=0.3,
