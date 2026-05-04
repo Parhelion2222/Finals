@@ -148,7 +148,7 @@ with col2:
     )
     
     st.plotly_chart(fig, use_container_width=True)
-    st.caption("Work-Life Balance increases ass the Average Starting Salary lowers leading for Education and Arts having the highest Work-Life Balance Score.")
+    st.caption("Work-Life Balance increases ass the Average Starting Salary lowers, with Education and Arts having the highest Work-Life Balance Score.")
 
     #Area chart
     fig_area = px.area(
@@ -170,7 +170,7 @@ with col2:
     
     fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
     st.plotly_chart(fig_area, use_container_width=True)
-    st.caption("Having higher Projects Completed gives the respondents to have higher count oof Job Offers.")
+    st.caption("Having higher Projects Completed gives the respondents to have higher count of Job Offers.")
        
     
     
