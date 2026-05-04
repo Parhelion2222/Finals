@@ -100,15 +100,16 @@ with col1:
         x="University_GPA",
         y="Starting_Salary",
         title="University GPA to Starting Salary",
-        color_discrete_sequence=px.colors.qualitative.Safe,
         labels={
             "University_GPA": "University GPA",
             "Starting_Salary": "Starting Salary ($)",
         },
         points=False,
     )
-
+    
+    fig_box.update_traces(marker_color="#00CC96", line_color="#00CC96")
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
+    
     st.plotly_chart(fig_box, use_container_width=True)
 
     
