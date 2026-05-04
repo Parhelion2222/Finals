@@ -32,7 +32,7 @@ if "selected_level" not in st.session_state:
     st.session_state.selected_field = None
 
 level = ["All"] + sorted(filter_field["Current_Job_Level"].unique().tolist())
-selected_level = st.selectbox("Filter by Job Level", fields)
+selected_level = st.selectbox("Filter by Job Level", level)
 filter = df if selected_level == "All" else df[df["Current_Job_Level"] == selected_level]
 
 col1, col2, col3, col4, col5 = st.columns(5)
