@@ -80,7 +80,7 @@ donut.update_traces(
     )
 
 donut.update_layout(
-    height=1000,                        
+    height=500,                        
     margin=dict(t=50, b=50, l=50, r=50),
 )
 
