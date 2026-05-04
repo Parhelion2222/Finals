@@ -150,18 +150,17 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-    fig_violin = px.violin(
+    fig_hist = px.histogram(
         filter,
-        x="Gender",
-        y="University_GPA",
+        x="University_GPA",
         color="Gender",
         color_discrete_sequence=px.colors.qualitative.Safe,
         title="University GPA Distribution by Gender",
         labels={"University_GPA": "University GPA"},
-        box=True,
+        barmode="overlay",
+        opacity=0.7,
     )
-    
-    st.plotly_chart(fig_violin, use_container_width=True)
+    st.plotly_chart(fig_hist, use_container_width=True)
 
 #Area chart
 fig_area = px.area(
