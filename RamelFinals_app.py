@@ -62,7 +62,6 @@ with col5:
         label="Average Career Satisfaction",
         value=f"{filter['Career_Satisfaction'].mean():.2f}"
     )
-col1, col2 = st.columns(2)
 
 #Donut chart
 donut = px.pie(
@@ -81,6 +80,8 @@ donut.update_traces(
     )
     
 st.plotly_chart(donut, use_container_width=True)
+
+col1, col2 = st.columns(2)
 
 with col1:
      #linechart 
