@@ -95,18 +95,23 @@ with col1:
     st.plotly_chart(donut, use_container_width=True)
     st.caption("Computer Science and Medicine leads in career satisfaction among all fields of study.")
 
-    #Histogram
-    fig_hist = px.histogram(
-        filter,
+    fig_bar = px.bar(
+        filter.groupby("University_GPA")["Career_Satisfaction"].mean().reset_index(),
         x="University_GPA",
-        title="University GPA Distribution",
-        color_discrete_sequence=["#00CC96"],
-        labels={"University_GPA": "University GPA"},
-        opacity=0.8,
-    )
-    
-    st.plotly_chart(fig_hist, use_container_width=True)
-    st.caption("Higher University GPA tends to lead to greater career satisfaction.")
+        y="Career_Satisfaction",
+        title="University GPA to Career Satisfaction",
+        color="University_GPA",
+        color_discrete_sequence=px.colors.qualitative.Safe,
+        labels={
+            "University_GPA": "University GPA",
+            "Career_Satisfaction": "Avg Career Satisfaction",
+        },
+)
+
+fig_bar.update_layout(showlegend=False, yaxis=dict(rangemode="tozero"))
+
+st.plotly_chart(fig_bar, use_container_width=True)
+st.caption("Higher University GPA tends to lead to greater career satisfaction.")
 
     
 with col2:
