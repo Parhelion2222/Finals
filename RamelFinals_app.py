@@ -92,11 +92,6 @@ with col1:
         pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
         )
     
-    donut.update_layout(
-        height=500,                        
-        margin=dict(t=50, b=50, l=50, r=50),
-    )
-    
     st.plotly_chart(donut, use_container_width=True)
 
     #Boxplot
