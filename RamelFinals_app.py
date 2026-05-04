@@ -15,7 +15,7 @@ def load_data():
 
 df = load_data()
 
-st.title("How Education and Career Choices Shape the Aspects of Your Future")
+st.title("How Different Career Choices Shape the Aspects of Your Future")
 
 #Filter barS
 col1, col2 = st.columns(2)
