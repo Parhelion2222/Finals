@@ -1,4 +1,3 @@
-
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -75,6 +74,10 @@ with col1:
         values="Career_Satisfaction",
         title="Career Satisfaction by Field of Study",
         hole=0.5, 
+        labels={
+        "Field_of_Study": "Field of Study",
+        "Career_Satisfaction": "Career Satisfaction"
+        }
         )
         
     donut.update_traces(
@@ -127,6 +130,7 @@ with col2:
         markers=True,
         title="Work-Life Balance by Starting Salary",
         labels={
+            "Field_of_Study": "Field of Study",
             "Work_jitter": "Work-Life Balance",
             "Starting_Salary": "Avg Starting Salary ($)",
         },
