@@ -64,10 +64,8 @@ with col5:
     )
 col1, col2 = st.columns(2)
 
-#Bar Chart
-with col1:
-
-    donut = px.pie(
+#Donut chart
+donut = px.pie(
         df_bar,
         names="Field_of_Study",
         values="Career_Satisfaction",
@@ -83,10 +81,9 @@ with col1:
     )
     
     st.plotly_chart(donut, use_container_width=True)
-    
-with col2:
 
-    #linechart 
+with col1:
+     #linechart 
     df_grouped = (
         filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
         .mean()
@@ -132,35 +129,27 @@ with col2:
 
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
     st.plotly_chart(fig_box, use_container_width=True)
-
-
-
-
-
-
-#Second sets of Columns
-
-col1, col2= st.columns(2)
-#Error Bar
-with col1:
+    
+with col2:
+    #Area chart
     fig_area = px.area(
-    filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
-    .reset_index()
-    .sort_values("Current_Job_Level", ascending=False), 
-    x="Job_Offers",
-    y="Projects_Completed",
-    color="Current_Job_Level",
-    title="Avg Projects Completed by Job Offers",
-    markers=True
+        filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
+        .reset_index()
+        .sort_values("Current_Job_Level", ascending=False), 
+        x="Job_Offers",
+        y="Projects_Completed",
+        color="Current_Job_Level",
+        title="Avg Projects Completed by Job Offers",
+        markers=True
     )
     
     fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
     st.plotly_chart(fig_area, use_container_width=True)
 
 
-with col2: 
+    #Line Chart
     df_avg = filter.groupby(["High_School_GPA", "Gender"])["University_GPA"].mean().reset_index()
-    fig_line = px.line(df_avg, 
+        fig_line = px.line(df_avg, 
                   x="High_School_GPA", 
                   y="University_GPA", 
                   color="Gender",
@@ -172,6 +161,9 @@ with col2:
                   })
 
     st.plotly_chart(fig_line)
+
+   
+
 
 
 
