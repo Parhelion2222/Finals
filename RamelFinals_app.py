@@ -108,10 +108,10 @@ with col1:
         },
 )
 
-fig_bar.update_layout(showlegend=False, yaxis=dict(rangemode="tozero"))
-
-st.plotly_chart(fig_bar, use_container_width=True)
-st.caption("Higher University GPA tends to lead to greater career satisfaction.")
+    fig_bar.update_layout(showlegend=False, yaxis=dict(rangemode="tozero"))
+    
+    st.plotly_chart(fig_bar, use_container_width=True)
+    st.caption("Higher University GPA tends to lead to greater career satisfaction.")
 
     
 with col2:
