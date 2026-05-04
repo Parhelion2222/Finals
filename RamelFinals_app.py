@@ -150,40 +150,28 @@ with col2:
     
     st.plotly_chart(fig, use_container_width=True)
 
-    fig_hist = px.histogram(
-        filter,
-        x="University_GPA",
-        color="Gender",
+    #Area chart
+    fig_area = px.area(
+        filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
+        .reset_index()
+        .sort_values("Current_Job_Level", ascending=False), 
+        x="Job_Offers",
+        y="Projects_Completed",
+        color="Current_Job_Level",
         color_discrete_sequence=px.colors.qualitative.Safe,
-        title="University GPA Distribution by Gender",
-        labels={"University_GPA": "University GPA"},
-        barmode="overlay",
-        opacity=0.7,
+        title="Average Projects Completed by Job Offers in each Job Level",
+        markers=True,
+        labels={
+                "Current_Job_Level" : "Current Job Level",
+                "Projects_Completed": "Projects Completed",
+                "Job_Offers": "Job Offers",
+            }
     )
-    st.plotly_chart(fig_hist, use_container_width=True)
-
-#Area chart
-fig_area = px.area(
-    filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
-    .reset_index()
-    .sort_values("Current_Job_Level", ascending=False), 
-    x="Job_Offers",
-    y="Projects_Completed",
-    color="Current_Job_Level",
-    color_discrete_sequence=px.colors.qualitative.Safe,
-    title="Average Projects Completed by Job Offers in each Job Level",
-    markers=True,
-    labels={
-            "Current_Job_Level" : "Current Job Level",
-            "Projects_Completed": "Projects Completed",
-            "Job_Offers": "Job Offers",
-        }
-)
-
-fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
-st.plotly_chart(fig_area, use_container_width=True)
-   
-
-
-
-
+    
+    fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
+    st.plotly_chart(fig_area, use_container_width=True)
+       
+    
+    
+    
+    
