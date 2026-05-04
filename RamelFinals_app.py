@@ -78,7 +78,7 @@ with col1:
         values="Career_Satisfaction",
         title="Career Satisfaction by Field of Study",
         hole=0.5, 
-        color_discrete_sequence=px.colors.qualitative.Safe
+        color_discrete_sequence=px.colors.qualitative.Safe,
         labels={
         "Field_of_Study": "Field of Study",
         "Career_Satisfaction": "Career Satisfaction"
