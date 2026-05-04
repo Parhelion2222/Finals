@@ -84,12 +84,13 @@ with col1:
             lambda t: t.update(opacity=1.0) if t.name == selected_field else None
         )
     
-   donut.update_traces(
-    opacity=0.3,
-    textinfo="label+percent",
-    textposition="inside",
-    pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
-)
+    donut.update_traces(
+        opacity=0.3,
+        textinfo="label+percent",
+        textposition="inside",
+        pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
+    )
+    
     st.plotly_chart(donut, use_container_width=True)
     
 with col2:
