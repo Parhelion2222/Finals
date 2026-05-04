@@ -164,7 +164,7 @@ fig_area = px.area(
     y="Projects_Completed",
     color="Current_Job_Level",
     title="Avg Projects Completed by Job Offers",
-    markers=True
+    markers=True,
     labels={
             "Projects_Completed": "Projects Completed",
             "Job_Offers": "Job Offers",
