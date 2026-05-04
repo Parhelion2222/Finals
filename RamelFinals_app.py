@@ -157,8 +157,8 @@ with col2:
         markers=True,
         title="Average University GPA by High School GPA and Gender",
         labels={
-          "High_School_GPA": "Average High School GPA",
-          "University_GPA": "Average University GPA"
+          "High_School_GPA": "Avg High School GPA",
+          "University_GPA": "Avg University GPA"
                   })
 
     st.plotly_chart(fig_line)
@@ -171,7 +171,7 @@ fig_area = px.area(
     x="Job_Offers",
     y="Projects_Completed",
     color="Current_Job_Level",
-    title="Avg Projects Completed by Job Offers",
+    title="Average Projects Completed by Job Offers in each Job Level",
     markers=True,
     labels={
             "Current_Job_Level" : "Current Job Level",
