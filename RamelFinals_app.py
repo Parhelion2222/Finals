@@ -70,7 +70,6 @@ col1, col2 = st.columns(2)
 
 with col1:
     #Donut chart
-    df_donut = filter.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
     
     donut = px.pie(
         df_donut,
@@ -116,7 +115,7 @@ with col1:
 with col2:
     #linechart 
     df_grouped = (
-        filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
+        df.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
         .mean()
         .reset_index()
         .sort_values("Work_Life_Balance")
