@@ -129,11 +129,6 @@ with col2:
 
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
     st.plotly_chart(fig_box, use_container_width=True)
-    # reset button
-    if st.session_state.selected_field:
-        if st.button("Reset Filter"):
-            st.session_state.selected_field = None
-            st.rerun()
 
 
 
