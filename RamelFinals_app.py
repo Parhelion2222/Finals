@@ -56,7 +56,7 @@ with col5:
     value=filter['Career_Satisfaction'].mean()
     )
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 #Bar Chart
 with col1:
