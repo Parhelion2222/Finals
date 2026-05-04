@@ -70,6 +70,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     #Donut chart
+    df_donut = df.groupby("Field_of_Study")["Career_Satisfaction"].mean().reset_index()
     
     donut = px.pie(
         df_donut,
