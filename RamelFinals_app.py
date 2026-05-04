@@ -36,7 +36,7 @@ with col2:
     
     level = ["All"] + sorted(filter_field["Current_Job_Level"].unique().tolist())
     selected_level = st.selectbox("Filter by Job Level", level)
-    filter = df if selected_level == "All" else filter_field[filter_field["Current_Job_Level"] == selected_level]
+    filter = filter_field if selected_level == "All" else filter_field[filter_field["Current_Job_Level"] == selected_level]
 
 col1, col2, col3, col4, col5 = st.columns(5)
 
