@@ -78,7 +78,7 @@ with col1:
         values="Career_Satisfaction",
         title="Career Satisfaction by Field of Study",
         hole=0.5, 
-        color_continuous_scale=px.colors.sequential.Viridis,
+        color_discrete_sequence=px.colors.qualitative.Safe,
         labels={
         "Field_of_Study": "Field of Study",
         "Career_Satisfaction": "Career Satisfaction"
@@ -131,7 +131,7 @@ with col2:
         df_grouped,
         x="Work_jitter",  
         y="Starting_Salary",
-        color_continuous_scale=px.colors.sequential.Viridis,
+        color_discrete_sequence=px.colors.qualitative.Safe,
         markers=True,
         title="Work-Life Balance by Starting Salary",
         labels={
@@ -154,7 +154,7 @@ with col2:
     fig_line = px.line(df_avg, 
         x="High_School_GPA", 
         y="University_GPA", 
-        color="Gender",
+        color_discrete_sequence=px.colors.qualitative.Safe,,
         markers=True,
         title="Average University GPA by High School GPA and Gender",
         labels={
