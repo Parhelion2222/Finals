@@ -117,7 +117,7 @@ with col1:
 with col2:
     #linechart 
     df_grouped = (
-        df.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
+        filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
         .mean()
         .reset_index()
         .sort_values("Work_Life_Balance")
