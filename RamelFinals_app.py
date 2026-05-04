@@ -99,20 +99,20 @@ with col1:
     fig_box = px.box(
         filter,
         x="University_GPA",
-        y="Starting_Salary",
-        title="University GPA to Starting Salary",
+        y="Career_Satisfaction",
+        title="University GPA to Career Satisfaction",
         labels={
             "University_GPA": "University GPA",
-            "Starting_Salary": "Starting Salary ($)",
+            "Career_Satisfaction": "Career Satisfaction",
         },
         points=False,
     )
-    
+
     fig_box.update_traces(marker_color="#00CC96", line_color="#00CC96")
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
     
     st.plotly_chart(fig_box, use_container_width=True)
-    st.caption("Higher University GPA tends to have higher Starting Salary.")
+    st.caption("Higher University GPA tends to lead to greater career satisfaction.")
 
     
 with col2:
