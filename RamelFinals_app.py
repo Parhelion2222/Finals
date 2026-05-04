@@ -93,7 +93,8 @@ with col1:
         )
     
     st.plotly_chart(donut, use_container_width=True)
-
+    st.caption("Computer Science and Medicine leads in career satisfaction among all fields of study.")
+    
     #Boxplot
     fig_box = px.box(
         filter,
@@ -111,6 +112,7 @@ with col1:
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
     
     st.plotly_chart(fig_box, use_container_width=True)
+    st.caption("Higher University GPA tends to have higher Starting Salary.")
 
     
 with col2:
@@ -146,6 +148,7 @@ with col2:
     )
     
     st.plotly_chart(fig, use_container_width=True)
+    st.caption("Work-Life Balance increases ass the Average Starting Salary lowers leading for Education and Arts having the highest Work-Life Balance Score.")
 
     #Area chart
     fig_area = px.area(
@@ -167,6 +170,7 @@ with col2:
     
     fig_area.update_traces(stackgroup=None, fill="tozeroy", opacity=0.5)
     st.plotly_chart(fig_area, use_container_width=True)
+    st.caption("Having higher Projects Completed gives the respondents to have higher count oof Job Offers.")
        
     
     
