@@ -85,6 +85,8 @@ with col1:
         )
     
     donut.update_layout(
+        textinfo="label+percent",   
+        textposition="inside",
         showlegend=True,
         height=800
     )
