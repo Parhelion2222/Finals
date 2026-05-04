@@ -63,33 +63,37 @@ with col5:
         value=f"{filter['Career_Satisfaction'].mean():.2f}"
     )
 
-#Donut chart
-donut = px.pie(
-    df_bar,
-    names="Field_of_Study",
-    values="Career_Satisfaction",
-    title="Career Satisfaction by Field of Study",
-    hole=0.5, 
-    )
-    
-donut.update_traces(
-    showlegend=False,
-    textinfo="label+percent",
-    textposition="inside",
-    pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
-    )
 
-donut.update_layout(
-    height=500,                        
-    margin=dict(t=50, b=50, l=50, r=50),
-)
-
-st.plotly_chart(donut, use_container_width=True)
 
 col1, col2 = st.columns(2)
 
 with col1:
-     #linechart 
+    #Donut chart
+    donut = px.pie(
+        df_bar,
+        names="Field_of_Study",
+        values="Career_Satisfaction",
+        title="Career Satisfaction by Field of Study",
+        hole=0.5, 
+        )
+        
+    donut.update_traces(
+        showlegend=False,
+        textinfo="label+percent",
+        textposition="inside",
+        pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
+        )
+    
+    donut.update_layout(
+        height=500,                        
+        margin=dict(t=50, b=50, l=50, r=50),
+    )
+    
+    st.plotly_chart(donut, use_container_width=True)
+
+    
+with col2:
+    #linechart 
     df_grouped = (
         filter.groupby(["Field_of_Study", "Work_Life_Balance"])["Starting_Salary"]
         .mean()
@@ -136,7 +140,6 @@ with col1:
     fig_box.update_layout(yaxis=dict(rangemode="tozero"))
     st.plotly_chart(fig_box, use_container_width=True)
     
-with col2:
     #Area chart
     fig_area = px.area(
         filter.groupby(["Job_Offers", "Current_Job_Level"])["Projects_Completed"].mean()
