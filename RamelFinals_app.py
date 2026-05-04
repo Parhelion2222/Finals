@@ -154,7 +154,7 @@ with col2:
     fig_line = px.line(df_avg, 
         x="High_School_GPA", 
         y="University_GPA", 
-        color_discrete_sequence=px.colors.qualitative.Safe,,
+        color_discrete_sequence=px.colors.qualitative.Safe,
         markers=True,
         title="Average University GPA by High School GPA and Gender",
         labels={
