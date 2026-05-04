@@ -66,21 +66,21 @@ col1, col2 = st.columns(2)
 
 #Donut chart
 donut = px.pie(
-        df_bar,
-        names="Field_of_Study",
-        values="Career_Satisfaction",
-        title="Career Satisfaction by Field of Study",
-        hole=0.5, 
+    df_bar,
+    names="Field_of_Study",
+    values="Career_Satisfaction",
+    title="Career Satisfaction by Field of Study",
+    hole=0.5, 
     )
     
-    donut.update_traces(
-        showlegend=False,
-        textinfo="label+percent",
-        textposition="inside",
-        pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
+donut.update_traces(
+    showlegend=False,
+    textinfo="label+percent",
+    textposition="inside",
+    pull=[0.1 if f == selected_field else 0 for f in df_bar["Field_of_Study"]]
     )
     
-    st.plotly_chart(donut, use_container_width=True)
+st.plotly_chart(donut, use_container_width=True)
 
 with col1:
      #linechart 
